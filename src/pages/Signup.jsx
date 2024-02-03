@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../BackgroundImage.module.css';
 
 const Signup = () => {
@@ -49,7 +50,10 @@ const Signup = () => {
               </button>
             </div>
             <div className="font-montserrat text-base font-normal leading-5 tracking-normal text-center mt-5">
-              Have an account? <span className="text-blue-500 cursor-pointer hover:underline">Login</span>
+            Have an account?{' '}
+              <Link to="/login" className="text-blue-500 cursor-pointer hover:underline">
+                Login
+              </Link>
             </div>
           </form>
         </div>
