@@ -8,7 +8,7 @@ const Nav = () => {
     backgroundColor: location.pathname === path ? "text-[#095EDC]" : "",
   });
   return (
-    <nav className="fixed top-0 w-full z-30 bg-white flex justify-between items-center px-6  py-6 md:px-28 md:py-[1.88rem] ">
+    <nav className="fixed top-0 w-full z-30 bg-white flex justify-between items-center px-6  py-6 lg:px-12 lg:py-[1.88rem] ">
       <h1 className="font-bold text-2xl md:text-[2.5rem] text-[#095EDC]">
         BRAG
       </h1>
