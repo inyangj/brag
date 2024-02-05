@@ -31,7 +31,7 @@ const Login = () => {
               placeholder="Password"
               className="p-3 w-full rounded-tl-[5px] rounded-br-[5px]"
             />
-            <span className="top-20px right-0 text-black text-right">
+            <span className="top-20px  text-black text-end">
               Forgot Password?
             </span>
           </div>
