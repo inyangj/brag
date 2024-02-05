@@ -8,6 +8,7 @@ import SocialMedia from "../components/AddBusiness/SocialMedia";
 import ImageBox from "../components/AddBusiness/ImageBox";
 import FormContainer from "../components/AddBusiness/FormContainer";
 import SubmitBtn from "../components/AddBusiness/SubmitBtn";
+import Category from "../components/AddBusiness/Category";
 
 function AddBusiness() {
   return (
@@ -17,6 +18,7 @@ function AddBusiness() {
       <LogoInput />
       <Form />
       <BusinessTime />
+      <Category />
       <SocialMedia />
       <div className="grid grid-cols-2 md:grid md:grid-cols-5 gap-4 mx-16">
         {[...Array(5)].map((_, index) => (

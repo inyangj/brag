@@ -71,18 +71,6 @@ const Form = ({ formData, handleInputChange }) => {
           required
         />
       </div>
-      <div className="mb-4">
-        <p className="text-[16px] font-semibold">Business category</p>
-        <input
-          type="text"
-          name="category"
-          // value={formData.category}
-          // onChange={handleInputChange}
-          placeholder="e.g makeup and beauty"
-          className="border rounded-lg border-gray-300 p-2 w-full"
-          required
-        />
-      </div>
     </form>
   );
 };
