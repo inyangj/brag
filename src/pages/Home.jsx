@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
-import home from "../assets/hero.png";
+import Hero from "../assets/Hero.png";
 import Search from "../components/home/Search";
 import FeaturedBusiness from "../components/home/FeaturedBusiness";
 import tick from "../assets/business/tick.svg";
@@ -27,7 +27,7 @@ const Home = () => {
               Get Started
             </button>
           </div>
-          <img src={home} alt="home" className="w-[500px] " />
+          <img src={Hero} alt="home" className="w-[500px]" />
         </section>
       </header>
       <main>
