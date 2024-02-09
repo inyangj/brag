@@ -27,7 +27,7 @@ const Home = () => {
               Get Started
             </button>
           </div>
-          <img src={Hero} alt="home" className="w-[500px] " />
+          <img src={Hero} alt="home" className="w-[500px]" />
         </section>
       </header>
       <main>
