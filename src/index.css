@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bin{
+    box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+.business{
+    box-shadow: 0px 2px 16px 0px #0000001A;
+}
