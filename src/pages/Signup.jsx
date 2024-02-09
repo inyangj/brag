@@ -1,9 +1,8 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "../BackgroundImage.module.css";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
@@ -14,7 +13,8 @@ const Signup = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,36 +23,43 @@ const Signup = () => {
       [name]: value,
     });
   };
-  const url= import.meta.env.VITE_APP_BASE_URL;
+  const url = import.meta.env.VITE_APP_BASE_URL;
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
+    if (formData.password.length < 8) {
+      setError("Password must be at least 8 characters long.");
+      return;
+    }
 
-      const data = {
-        fullName: formData.fullname,
-        email: formData.email,
-        password: formData.password,
-      };
-      console.log(data);
+    const data = {
+      fullName: formData.fullname,
+      email: formData.email,
+      password: formData.password,
+    };
 
-      try {
-        setIsLoading(true);
-        const response = await axios.post(`${url}/users/signup`, data);
+    try {
+      setIsLoading(true);
+      const response = await axios.post(`${url}/users/signup`, data);
 
-        if (response.status === 201) {
-          toast.success("Registration successful!");
-          localStorage.setItem("userData", response.data);
-          setIsLoading(false);
-          navigate("/");
-        } else {
-          toast.error("Registration unsuccessful.");
-        }
-      } catch (error) {
-        toast.error("Registration failed.");
+      if (response.status === 201) {
+        toast.success("Registration successful!");
+        localStorage.setItem("userData", response.data);
+        setIsLoading(false);
+        setShowModal(true); 
+      } else {
+        toast.error("Registration unsuccessful.");
       }
-    
+    } catch (error) {
+      toast.error("Registration failed.");
+    }
   };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div
       className={`absolute inset-0 bg-cover bg-center ${styles.backgroundImage} `}
@@ -101,6 +108,7 @@ const Signup = () => {
                 placeholder="Password"
                 className="p-3 w-full rounded-tl-[5px] rounded-br-[5px] mt-3"
               />
+              {error && <p className="text-red-500 text-sm">{error}</p>}
             </div>
             <div className="flex items-center justify-center">
               <button
@@ -119,6 +127,22 @@ const Signup = () => {
             </div>
           </form>
         </div>
+        {/* Modal */}
+        {showModal && (
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+            <div className="bg-white p-8 rounded-md shadow-md text-center">
+              <p className="text-lg font-semibold">
+                Check your email for verification link
+              </p>
+              <button
+                onClick={closeModal}
+                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
