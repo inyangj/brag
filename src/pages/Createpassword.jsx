@@ -36,7 +36,7 @@ const Createpassword = () => {
               type="submit"
               className="p-3 w-full h-12 bg-blue-500 text-white mt-[12%] rounded-md"
             >
-             Submit
+            Submit
             </button>
           </div>
         </form>
