@@ -1,4 +1,4 @@
 .backgroundImage {
-    background-image: url('./assets/login/bg.png');
-    background-size: cover; 
-  }
+  background-image: url("./assets/login/bg.png");
+  background-size: cover;
+}

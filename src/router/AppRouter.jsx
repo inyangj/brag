@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import Layout from "../pages/Layout";
 import Business from "../pages/Business";
 import AddBusiness from "../pages/AddBusiness";
+import ProfilePage from "../pages/ProfilePage";
 
 const AppRouter = () => {
   return (
@@ -18,10 +19,11 @@ const AppRouter = () => {
         <Route path={`/signup`} element={<Signup />} />
         <Route path={`/forgotpassword`} element={<Forgotpassword />} />
         <Route path={`/createpassword`} element={<Createpassword />} />
-        <Route path={`/business`} element={<Layout />} >
+        <Route path={`/business`} element={<Layout />}>
           <Route path={`/business`} element={<Business />} />
         </Route>
         <Route path={`/addBusiness`} element={<AddBusiness />} />
+        <Route path={`/profilepage`} element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );
