@@ -8,7 +8,7 @@ const Layout = () => {
   const location = useLocation();
 
   return (
-    <div className="relative">
+    <div className="relative font-montserrat">
       <header>
         <Nav />
    

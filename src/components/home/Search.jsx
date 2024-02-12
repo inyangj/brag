@@ -15,7 +15,7 @@ const Search = ({className, children}) => {
 
   return (
     <section className='grid justify-center '>
-        <form action="" onSubmit={handleSubmit} className='flex items-center  py-4 justify-center lg:w-[500px] xl:w-[800px]'>
+        <form action="" onSubmit={handleSubmit} className='flex items-center  py-4 justify-center :w-[500px] xl:w-[800px]'>
             <div className=' rounded-l-[10px] bin   flex  items-center p-3 w-full'>
         <input 
         type="text"
@@ -35,9 +35,9 @@ const Search = ({className, children}) => {
 
         </form>
 
-            {/* <button className={`${className}`} onClick={handleSubmit}>
-                Search
-            </button> */}
+            <button className={`${className} `} onClick={handleSubmit}>
+               {children}
+            </button> 
     </section>
   )
 }

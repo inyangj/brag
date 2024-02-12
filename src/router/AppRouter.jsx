@@ -8,6 +8,9 @@ import Layout from "../pages/Layout";
 import Business from "../pages/Business";
 import AddBusiness from "../pages/AddBusiness";
 import Verification from "../pages/Verification";
+import UserHome from "../pages/UserHome";
+import Services from "../components/business/Services";
+import ServiceReview from "../pages/ServiceReviews";
 import ProfilePage from "../pages/ProfilePage";
 
 const AppRouter = () => {
