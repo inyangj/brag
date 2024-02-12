@@ -85,8 +85,8 @@ const FeaturedBusiness = ({productsToShow}) => {
     ]
 
   return (
-    <section className='px-6 py-6 lg:px-12 lg:py-[1.88rem] mb-8'>
-      <h2 className={`text-xl md:text-3xl font-bold text-center mb-8 ${location.pathname === "/" ? "text-[#095EDC]" : "text-black"}`}>Featured Businesses</h2>
+    <section className=' mb-8'>
+      <h2 className={`text-xl md:text-3xl font-bold text-center mb-8 text-[#095EDC]`}>Featured Businesses</h2>
 
         <aside className='grid gap-6 md:gap-9 justify-center  lg:grid-cols-2'>
           {products.slice(0, productsToShow).map((product, index) => (
