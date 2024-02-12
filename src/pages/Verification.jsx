@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import styles from '../BackgroundImage.module.css';
+import {Link} from 'react-router-dom'
 
 const verification = () => {
 return (
@@ -12,11 +13,11 @@ return (
         <p className="font-montserrat text-2xl text-center">
         Login to continue</p>
             <div className="flex items-center justify-center">
-            <button
+            <Link to={`/login`}
             type="submit"
-            className="p-3 w-[50%] h-12 bg-blue-500 text-white mt-[8%] rounded-md"
+            className="p-3 w-[50%] text-center h-12 bg-blue-500 text-white mt-[8%] rounded-md"
             >Login
-            </button>
+            </Link>
         </div>
         
         </div>
