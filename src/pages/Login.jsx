@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,6 +12,7 @@ const Login = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -28,13 +29,17 @@ const Login = () => {
     try {
       setIsLoading(true);
       const response = await axios.post(`${url}/users/login`, formData);
+      const { accessToken, user } = response.data;
 
       if (response.status === 200) {
         toast.success('Login successful!');
+        console.log(`response data: ${response.data}, Access ${accessToken} user: ${user}`)
         localStorage.setItem('userData', JSON.stringify(response.data));
+        localStorage.setItem('token', JSON.stringify(accessToken));
+      localStorage.setItem('user', JSON.stringify(user));
+
         setIsLoading(false);
-        // Redirect to '/dashboard' or any other desired route after successful login
-        window.location.href = '/dashboard';
+        navigate('/brag');
       } else {
         toast.error('Login unsuccessful. Please check your credentials.');
       }
