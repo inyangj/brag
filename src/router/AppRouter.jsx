@@ -8,6 +8,9 @@ import Layout from "../pages/Layout";
 import Business from "../pages/Business";
 import AddBusiness from "../pages/AddBusiness";
 import Verification from "../pages/Verification";
+import UserHome from "../pages/UserHome";
+import Services from "../components/business/Services";
+import ServiceReview from "../pages/ServiceReviews";
 
 const AppRouter = () => {
   return (
@@ -18,8 +21,11 @@ const AppRouter = () => {
         <Route path={`/signup`} element={<Signup />} />
         <Route path={`/forgotpassword`} element={<Forgotpassword />} />
         <Route path={`/Verification`} element={<Verification />} />
-        <Route path={`/business`} element={<Layout />} >
-          <Route path={`/business`} element={<Business />} />
+        <Route path={`/brag`} element={<Layout />}>
+          <Route path={`/brag`} element={<UserHome />} />
+          <Route path={`/brag/business`} element={<Business />}>
+            <Route path={`/brag/business/`} element={<ServiceReview />} />
+          </Route>
         </Route>
         <Route path={`/addBusiness`} element={<AddBusiness />} />
       </Routes>

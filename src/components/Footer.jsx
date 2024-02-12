@@ -13,7 +13,7 @@ const Footer = () => {
   });
   return (
     <footer className="bg-[#095EDC2B]">
-      <section className=" mt-10 grid md:grid-cols-3 xl:grid-cols-4 gap-10 px-6  py-6 lg:px-12 lg:py-[1.88rem]">
+      <section className=" mt-10 grid md:grid-cols-3 xl:grid-cols-4 gap-10 px-6  py-6 lg:px-12 lg:py-[1.88rem] xl:px-28">
         <div>
           <h3 className="font-bold text-2xl lg:text-[1.875rem] text-[#095EDC]">
             BRAG

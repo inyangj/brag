@@ -13,12 +13,13 @@ const Home = () => {
     <div className="relative ">
       <header>
         <Nav />
-        <section className="lg:flex mt-10 bg-[#095EDC2B] justify-center items-center px-6  py-6 lg:px-12 lg:py-[1.88rem] ">
+        <section className="flex flex-col md:flex-row-reverse mt-10 bg-[#095EDC2B] justify-center md:gap-10 items-center px-6  py-6 lg:pl-12 lg:px-0 xl:pl-28 lg:py-[1.88rem] ">
+          <img src={Hero} alt="home" className=" my-10 md:w-[300px] lg:w-1/2 " />
           <div className="my-10">
-            <h2 className="text-3xl md:text-6xl font-bold ">
+            <h2 className="text-3xl xl:text-6xl font-bold xl:mb-5 ">
               Looking for the best places around you?
             </h2>
-            <p className="text-xl md:text-3xl pt-3 mb-4">
+            <p className="text-xl xl:text-3xl pt-3 mb-4">
               We pride ourselves on providing impartial and authentic reviews.
               Our community of users shares their genuine experiences, ensuring
               you get the most accurate information.
@@ -27,16 +28,18 @@ const Home = () => {
               Get Started
             </button>
           </div>
-          <img src={Hero} alt="home" className="w-[500px]" />
         </section>
       </header>
       <main>
         <section className="">
           <Search />
+          <div className="px-6 py-6 lg:px-12 lg:py-[1.88rem] xl:px-28">
           <FeaturedBusiness productsToShow={4} />
+
+          </div>
           <AboutUs />
         </section>
-        <div className="p-5 bin rounded-[50px] mx-6  my-6 lg:mx-12 lg:my-[1.88rem]">
+        <div className="p-5 bin rounded-[50px] mx-6  my-6 lg:mx-12 xl:mx-28 lg:my-[1.88rem]">
           <section className="pt-10 bg-[#095EDC2B] justify-center items-center  grid rounded-[50px] px-6  py-10 md:py-10 xl:py-12 text-center">
             <h3 className="text-2xl md:text-3xl font-bold  text-[#095EDC]  ">
               Get Started With <span className="text-[#095EDC]">BRAG</span>
@@ -53,7 +56,7 @@ const Home = () => {
             </Link>
           </section>
         </div>
-        <section className="mx-6  my-6 lg:mx-12 lg:mt-[45px] lg:mb-[169px] grid gap-10">
+        <section className="mx-6  my-6 lg:mx-12 lg:mt-[45px] lg:mb-[169px] xl:mx-28 grid gap-10">
           <h3 className="text-2xl md:text-3xl font-bold  text-[#095EDC] text-center ">
             Benefits
           </h3>

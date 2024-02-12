@@ -1,4 +1,5 @@
 import React from 'react'
+import {Outlet} from 'react-router-dom'
 
 const Services = ({className, styleName}) => {
 
@@ -15,12 +16,14 @@ const Services = ({className, styleName}) => {
 
 
   return (
-    <div className={`${styleName}`}>
+    <div className={`${styleName} `}>
         {Services.map((service, index)=>(
             
-                <p key={index} className={`border   ${className} `}>{service}</p>
+                <p key={index} className={`border   ${className}  `}>{service}</p>
            
         ))}
+
+    
 
     </div>
   )
