@@ -11,7 +11,7 @@ const LogoInput = () => {
   };
 
   return (
-    <div className="mx-16">
+    <div className="mx-6 md:mx-16">
       <h4 className="py-4">
         Fill in the details below to add your business on BRAG
       </h4>

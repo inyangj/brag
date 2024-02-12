@@ -13,7 +13,7 @@ const Nav = () => {
         BRAG
       </h1>
       <ul className="flex gap-2 justify-between items-center text-xs md:text-2xl">
-        <Li to="/home" style={getLinkStyle("/home")}>
+        <Li to="/" style={getLinkStyle("/")}>
           Home
         </Li>
         <Li to="/review" style={getLinkStyle("/review")}>

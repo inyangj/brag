@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Li from "./elements/Li";
 import mail from "../assets/footer/mail.svg";
 import call from "../assets/footer/call.svg";
-import insta from "../assets/footer/insta.svg";
+import insta from "../assets/footer/Insta.svg";
 import facebook from "../assets/footer/facebook.svg";
 
 const Footer = () => {

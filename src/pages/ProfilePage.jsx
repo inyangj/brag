@@ -1,18 +1,31 @@
 import React from "react";
 import Nav from "../components/AddBusiness/Nav";
-import Hero from "../components/Profile/Hero";
+import ProfileHero from "../components/Profile/ProfileHero";
 import PersonalInfo from "../components/Profile/PersonalInfo";
 import Form from "../components/AddBusiness/Form";
+import Category from "../components/AddBusiness/Category";
+import BusinessTime from "../components/AddBusiness/BusinessTime";
+import SocialMedia from "../components/AddBusiness/SocialMedia";
+import ImageBox from "../components/AddBusiness/ImageBox";
+import FormContainer from "../components/AddBusiness/FormContainer";
 
 function ProfilePage() {
   return (
     <div>
       <Nav />
-      <Hero />
+      <ProfileHero />
       <PersonalInfo />
       <div>
         <h2 className="mx-16 mt-6 font-bold">Business Info</h2>
-        <Form />
+        <FormContainer />
+      </div>
+      <Category />
+      <BusinessTime />
+      <SocialMedia />
+      <div className="grid grid-cols-2 mx-6 md:grid md:grid-cols-5 lg:grid-cols-3 md:gap-4 md:mx-16 xl:grid-cols-5 ">
+        {[...Array(5)].map((_, index) => (
+          <ImageBox key={index} />
+        ))}
       </div>
     </div>
   );

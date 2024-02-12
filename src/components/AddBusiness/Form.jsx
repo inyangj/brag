@@ -2,8 +2,9 @@ import React from "react";
 import Input from "../element/Input";
 
 const Form = ({ formData, handleInputChange }) => {
+  console.log({ formData });
   return (
-    <form className="mx-16">
+    <form className="mx-6 md:mx-16">
       <div className="mb-4">
         <label htmlFor="businessName" className="text-[16px] font-semibold">
           Business Name:
@@ -67,6 +68,7 @@ const Form = ({ formData, handleInputChange }) => {
           required
         />
       </div>
+
       <div className="mb-4">
         <p className="text-[16px] font-semibold">Location</p>
         <input

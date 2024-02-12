@@ -15,7 +15,11 @@ const FormContainer = () => {
   });
 
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const resetForm = () => {
@@ -30,10 +34,21 @@ const FormContainer = () => {
     });
   };
 
+  const url = import.meta.env.VITE_APP_BASE_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/businesses/createBusiness", formData);
+      const response = await axios.post(
+        `${url}/businesses/createBusiness`,
+        formData,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YmIwZGFlYzk2NTM4ZmI2NGUwMGQxYSIsImlhdCI6MTcwNjc3Njg4OCwiZXhwIjoxNzA5MzY4ODg4fQ.gsmFSSvy9AEeUUV56jMpbJqIQQYrFSb6s--t2lv7Fyc",
+          },
+        }
+      );
     } catch (error) {
       console.error("Error creating business:", error);
       // Handle error (e.g., display an error message to the user)
