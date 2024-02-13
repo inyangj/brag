@@ -8,6 +8,9 @@ import BusinessTime from "../components/AddBusiness/BusinessTime";
 import SocialMedia from "../components/AddBusiness/SocialMedia";
 import ImageBox from "../components/AddBusiness/ImageBox";
 import FormContainer from "../components/AddBusiness/FormContainer";
+import LogoInput from "../components/AddBusiness/LogoInput";
+import ProfileLogoBox from "../components/Profile/ProfileLogoBox";
+import Buttons from "../components/Profile/Buttons";
 
 function ProfilePage() {
   return (
@@ -15,8 +18,12 @@ function ProfilePage() {
       <Nav />
       <ProfileHero />
       <PersonalInfo />
-      <div>
-        <h2 className="mx-16 mt-6 font-bold">Business Info</h2>
+      <FormContainer />
+      <Buttons />
+
+      {/* <div>
+        <h2 className="mx-6 md:mx-16 mt-6 font-bold">Business Info</h2>
+        <ProfileLogoBox />
         <FormContainer />
       </div>
       <Category />
@@ -26,7 +33,7 @@ function ProfilePage() {
         {[...Array(5)].map((_, index) => (
           <ImageBox key={index} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

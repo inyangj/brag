@@ -25,7 +25,7 @@ const ImageBox = () => {
         htmlFor="image"
         className="block text-sm font-medium text-gray-600"
       ></label>
-      <div className="flex items-center justify-center bg-[#D9D9D9] border border-gray-300 p-4 w-32 h-32 md:w-48 md:h-48">
+      <div className="flex items-center justify-center bg-[#D9D9D9] border border-gray-300 p-4 w-32 h-32 md:w-48 md:h-48 ">
         <label htmlFor="image" className="">
           {selectedImage ? (
             <img

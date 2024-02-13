@@ -34,6 +34,7 @@ const FormContainer = () => {
     });
   };
 
+  const [submitBtnText, setSubmitBtnText] = useState("Submit");
   const url = import.meta.env.VITE_APP_BASE_URL;
 
   const handleSubmit = async (e) => {
@@ -49,6 +50,8 @@ const FormContainer = () => {
           },
         }
       );
+      setSubmitBtnText("Submitted!");
+      resetForm();
     } catch (error) {
       console.error("Error creating business:", error);
       // Handle error (e.g., display an error message to the user)
@@ -56,8 +59,12 @@ const FormContainer = () => {
   };
   return (
     <div>
-      <Form formData={formData} handleInputChange={handleInputChange} />
-      <SubmitBtn handleSubmit={handleSubmit} />
+      <Form
+        formData={formData}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+      />
+      <SubmitBtn text={submitBtnText} handleSubmit={handleSubmit} />
     </div>
   );
 };

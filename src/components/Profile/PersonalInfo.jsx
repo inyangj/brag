@@ -3,8 +3,8 @@ import React from "react";
 function PersonalInfo() {
   return (
     <div>
-      <h2 className="mt-12 mx-16 font-bold">PERSONAL INFO</h2>
-      <form className="mx-16">
+      <h2 className="mt-12 mx-6 md:mx-16 font-bold">PERSONAL INFO</h2>
+      <form className="mx-6 md:mx-16">
         <div className="mb-4">
           <p className="text-[16px] font-semibold">Business name</p>
           <input
