@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../BackgroundImage.module.css';
 
-const Login = () => {
+const Login = ({setIsLoggedIn}) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -29,16 +29,18 @@ const Login = () => {
     try {
       setIsLoading(true);
       const response = await axios.post(`${url}/users/login`, formData);
-      const { accessToken, user } = response.data;
 
       if (response.status === 200) {
         toast.success('Login successful!');
-        console.log(`response data: ${response.data}, Access ${accessToken} user: ${user}`)
         localStorage.setItem('userData', JSON.stringify(response.data));
-        localStorage.setItem('token', JSON.stringify(accessToken));
-      localStorage.setItem('user', JSON.stringify(user));
+        const { refreshToken, ...data } = response.data;
+        localStorage.setItem('token', JSON.stringify(refreshToken));
+      localStorage.setItem('user', JSON.stringify(data));
+      console.log(`User Object ${data}, 
+       hasBusiness : ${data.data.hasBusiness}`)
 
         setIsLoading(false);
+        setIsLoggedIn(true);
         navigate('/brag');
       } else {
         toast.error('Login unsuccessful. Please check your credentials.');
