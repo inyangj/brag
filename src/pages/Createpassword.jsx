@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
 import styles from '../BackgroundImage.module.css';
 
@@ -18,7 +18,7 @@ const Createpassword = () => {
     }
 
     try {
-      const response = await axios.post(`${url}/users/reset-password`, { // Assuming reset password endpoint
+      const response = await axios.post(`${url}/users/reset-password`, {
         newPassword 
       });
 
