@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import Forgotpassword from "../pages/Forgotpassword";
 import Unreguser from "../pages/Unreguser";
 import Createpassword from "../pages/Createpassword";
+import Reguser from "../pages/Reguser";
 import Home from "../pages/Home";
 import Layout from "../pages/Layout";
 import Business from "../pages/Business";
@@ -24,6 +25,7 @@ const AppRouter = () => {
         <Route path={`/forgotpassword`} element={<Forgotpassword />} />
         <Route path={`/Verification`} element={<Verification />} />
         <Route path={`/Createpassword`} element={<Createpassword />} />
+        <Route path={`/Reguser`} element={<Reguser />} />
         <Route path={`/Unreguser`} element={<Unreguser />} />
         <Route path={`/business`} element={<Layout />}>
           <Route path={`/business`} element={<Business />} />
