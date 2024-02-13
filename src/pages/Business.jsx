@@ -49,9 +49,9 @@ const Business = () => {
             className={`border-[#A9A9A9] text-2xl rounded-[10px] py-4 pl-8 `}
           />
           <div className=" ">
-            <button className="bg-[#095EDC] text-white py-5 px-3 rounded-[10px] text-2xl">
+            {/* <button className="bg-[#095EDC] text-white py-5 px-3 rounded-[10px] text-2xl">
               + Add more services
-            </button>
+            </button> */}
 
             <p className=" text-lg md:text-2xl mt-9 mb-2">
               Share this links to get reviews from customers

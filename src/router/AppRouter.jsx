@@ -12,9 +12,11 @@ import Verification from "../pages/Verification";
 import UserHome from "../pages/UserHome";
 import Services from "../components/business/Services";
 import ServiceReview from "../pages/ServiceReviews";
+import ProfilePage from "../pages/ProfilePage";
 
 import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
+import UserBusinessView from "../pages/UserBusinessView";
 
 const AppRouter = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,11 +47,14 @@ const AppRouter = () => {
         <Route path={`/Verification`} element={<Verification />} />
         <Route path={`/Createpassword`} element={<Createpassword />} />
         <Route path={`/Unreguser`} element={<Unreguser />} />
+        <Route path={`/profile`} element={<ProfilePage />} />
+
 
         
           <>
           
             <Route path={`/brag`} element={<Layout  setIsLoggedIn={setIsLoggedIn}/>}>
+              <Route path={`/brag/business/view`} element={<UserBusinessView />} />
               <Route path={`/brag`} element={<UserHome />} />
               {hasBusiness ? (
                 <Route path={`/brag/business`} element={<Business />}>
@@ -60,7 +65,10 @@ const AppRouter = () => {
               )}
             </Route>
             <Route path={`/addBusiness`} element={<AddBusiness />} />
+            
           </>
+
+          
      
       </Routes>
     </BrowserRouter>
