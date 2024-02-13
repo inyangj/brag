@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import Forgotpassword from "../pages/Forgotpassword";
+import Unreguser from "../pages/Unreguser";
 import Createpassword from "../pages/Createpassword";
 import Home from "../pages/Home";
 import Layout from "../pages/Layout";
@@ -42,8 +43,10 @@ const AppRouter = () => {
         <Route path={`/signup`} element={<Signup />} />
         <Route path={`/forgotpassword`} element={<Forgotpassword />} />
         <Route path={`/Verification`} element={<Verification />} />
+        <Route path={`/Createpassword`} element={<Createpassword />} />
+        <Route path={`/Unreguser`} element={<Unreguser />} />
 
-        {isLoggedIn ? (
+        
           <>
           
             <Route path={`/brag`} element={<Layout  setIsLoggedIn={setIsLoggedIn}/>}>
@@ -58,12 +61,31 @@ const AppRouter = () => {
             </Route>
             <Route path={`/addBusiness`} element={<AddBusiness />} />
           </>
-        ) : (
-          <Route path="*" element={<Navigate to="/login" />} />
-        )}
+     
       </Routes>
     </BrowserRouter>
   );
 };
 
 export default AppRouter;
+
+
+
+// {isLoggedIn ? (
+//   <>
+  
+//     <Route path={`/brag`} element={<Layout  setIsLoggedIn={setIsLoggedIn}/>}>
+//       <Route path={`/brag`} element={<UserHome />} />
+//       {hasBusiness ? (
+//         <Route path={`/brag/business`} element={<Business />}>
+//           <Route path={`/brag/business/`} element={<ServiceReview />} />
+//         </Route>
+//       ) : (
+//         <Route path={`/brag/business`} element={<AddBusiness />} />
+//       )}
+//     </Route>
+//     <Route path={`/addBusiness`} element={<AddBusiness />} />
+//   </>
+// ) : (
+//   <Route path="*" element={<Navigate to="/login" />} />
+// )}

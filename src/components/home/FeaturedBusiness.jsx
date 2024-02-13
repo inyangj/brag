@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+
 import pic1 from '../../assets/business/business.jpg'
 import pic2 from '../../assets/business/business1.jpg'
 import pic3 from '../../assets/business/profile.jpeg'
 import review from '../../assets/business/review.png'
+import logo from '../../assets/logo.png'
 import { useQuery } from "@tanstack/react-query";
 import { featuredBusiness } from '../../utility/fetch'
 
@@ -97,7 +99,8 @@ const FeaturedBusiness = ({productsToShow}) => {
 useEffect( () => {
   setProducts(business.data)
 },[])
-    console.log(products);
+console.log(products)
+ 
 
   return (
     <section className=' mb-8'>
@@ -107,7 +110,7 @@ useEffect( () => {
           {/* <Link to={`/products`} state={location.state} className='text-center  w-fit px-3 py-5 md:px-6 md:py-10 rounded-[10px] bg-[#095EDC] text-white'>View All</Link> */}
           {Array.isArray(products) && products.slice(0, productsToShow).map((product, index) => (
             <div key={index} className="business text-xl md:text-2xl grid gap-3 justify-center w-fit px-3 py-5 md:px-6 md:py-10 rounded-[10px]">
-               <img src={product.logo?.logoUrl} className=' rounded-[10px]' alt="business-logo" />
+               <img src={product.logo?.logoUrl || logo} className=' rounded-[10px] w-full' alt="business-logo" />
             <p>{product.businessName}</p>
             <div className='flex items-center gap-2'>
               <img src={product.ratings} className='w-1/2 md:w-2/3 ' alt="review" />

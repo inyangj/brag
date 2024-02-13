@@ -42,11 +42,10 @@ const Login = ({setIsLoggedIn}) => {
         setIsLoading(false);
         setIsLoggedIn(true);
         navigate('/brag');
-      } else {
-        toast.error('Login unsuccessful. Please check your credentials.');
       }
     } catch (error) {
-      toast.error('Login failed. Please try again later.');
+      toast.error('Incorrect username or password.');
+      setIsLoading(false);
     }
   };
 
@@ -89,6 +88,7 @@ const Login = ({setIsLoggedIn}) => {
               <button
                 type="submit"
                 className="p-3 w-full h-12 bg-blue-500 text-white mt-[12%] rounded-md"
+                disabled={isLoading}
               >
                 {isLoading ? 'Loading...' : 'Login'}
               </button>
