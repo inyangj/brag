@@ -53,7 +53,7 @@ const Login = ({setIsLoggedIn}) => {
     <div className={`absolute inset-0 bg-cover bg-center ${styles.backgroundImage}`}>
       <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center">
         <div className="w-[400px] h-[500px] p-6 bg-gray-300 rounded-tl-[20px] rounded-br-[20px] shadow-md relative">
-          <h1 className="text-3xl text-blue-500 font-bold mb-4 text-center">BRAG</h1>
+          <h1 className="text-3xl text-[#095EDC] font-bold mb-4 text-center">BRAG</h1>
           <p className="font-montserrat text-2xl font-bold leading-10 tracking-wider text-center">Welcome back!</p>
           <p className="font-montserrat text-base font-medium leading-5 tracking-normal text-center text-black">
             Login to see reviews
@@ -87,7 +87,7 @@ const Login = ({setIsLoggedIn}) => {
             <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="p-3 w-full h-12 bg-blue-500 text-white mt-[12%] rounded-md"
+                className="p-3 w-full h-12 bg-[#095EDC] text-white mt-[12%] rounded-md"
                 disabled={isLoading}
               >
                 {isLoading ? 'Loading...' : 'Login'}
@@ -95,7 +95,7 @@ const Login = ({setIsLoggedIn}) => {
             </div>
             <div className="font-montserrat text-base font-normal leading-5 tracking-normal text-center mt-5">
               Don&apos;t have an account?{' '}
-              <Link to="/signup" className="text-blue-500 cursor-pointer hover:underline">
+              <Link to="/signup" className="text-[#095EDC] cursor-pointer hover:underline">
                 Sign Up
               </Link>
             </div>
