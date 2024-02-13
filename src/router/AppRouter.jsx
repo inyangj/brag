@@ -13,6 +13,7 @@ import Verification from "../pages/Verification";
 import UserHome from "../pages/UserHome";
 import Services from "../components/business/Services";
 import ServiceReview from "../pages/ServiceReviews";
+import ProfilePage from "../pages/ProfilePage";
 
 const AppRouter = () => {
   return (
@@ -26,13 +27,11 @@ const AppRouter = () => {
         <Route path={`/Createpassword`} element={<Createpassword />} />
         <Route path={`/Reguser`} element={<Reguser />} />
         <Route path={`/Unreguser`} element={<Unreguser />} />
-        <Route path={`/brag`} element={<Layout />}>
-          <Route path={`/brag`} element={<UserHome />} />
-          <Route path={`/brag/business`} element={<Business />}>
-            <Route path={`/brag/business/`} element={<ServiceReview />} />
-          </Route>
+        <Route path={`/business`} element={<Layout />}>
+          <Route path={`/business`} element={<Business />} />
         </Route>
         <Route path={`/addBusiness`} element={<AddBusiness />} />
+        <Route path={`/profilepage`} element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

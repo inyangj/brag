@@ -1,9 +1,9 @@
 .backgroundImage {
-    background-image: url('./assets/login/bg.png');
-    background-size: cover; 
-  }
+  background-image: url("./assets/login/bg.png");
+  background-size: cover;
+}
 
-  .backgroundImage2 {
-    background-image: url('./assets/review/smiling.png');
-    background-size: cover;
-  }
+.backgroundImage2 {
+  background-image: url("./assets/review/smiling.png");
+  background-size: cover;
+}

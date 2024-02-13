@@ -52,8 +52,10 @@ const BusinessTime = () => {
 
   return (
     <div>
-      <p className="text-[16px] font-semibold mx-[62px]">Hours of operation</p>
-      <div className="grid grid-cols-2 gap-4 mt-4 mx-16">
+      <p className="text-[16px] font-semibold mx-6 md:mx-[62px]">
+        Hours of operation
+      </p>
+      <div className="grid grid-cols-2 gap-4 mt-4 mx-6 md:mx-16">
         <div>
           <label
             htmlFor="startDay"
@@ -95,7 +97,7 @@ const BusinessTime = () => {
               ))}
             </select>
           </div>
-        </div> 
+        </div>
         <div>
           <label
             htmlFor="startTime"
