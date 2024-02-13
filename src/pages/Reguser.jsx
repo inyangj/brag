@@ -32,10 +32,10 @@ return (
 </div>
         <h4 className="text-center mt-4 md:mt-8 font-montserrat text-2xl md:text-3xl font-medium leading-10 md:leading-12">Indicate the services you're reviewing for</h4>
         <div className="grid grid-cols-1 md:grid-cols-4 justify-items-center mt-5" style={{ gap: '0' }}>
-    <button className="w-full h-20 p-2 border border-gray-300 rounded-lg flex items-center font-medium justify-center md:w-[120px] bg-white text-[#095EDC] focus:outline-none hover:bg-blue-500 hover:text-white transition-colors duration-300">Adult Shoes</button>
-    <button className="w-full h-20 p-2 border border-gray-300 rounded-lg flex items-center font-medium justify-center md:w-[120px] bg-white text-[#095EDC] focus:outline-none hover:bg-blue-500 hover:text-white transition-colors duration-300">Kiddies shoes</button>
-    <button className="w-full h-20 p-2 border border-gray-300 rounded-lg flex items-center font-medium justify-center md:w-[120px] bg-white text-[#095EDC] focus:outline-none hover:bg-blue-500 hover:text-white transition-colors duration-300">Wholesales</button>
-    <button className="w-full h-20 p-2 border border-gray-300 rounded-lg flex items-center font-medium justify-center md:w-[120px] bg-white text-[#095EDC] focus:outline-none hover:bg-blue-500 hover:text-white transition-colors duration-300">More</button>
+    <button className="w-full h-20 p-2 border border-[#095EDC] rounded-lg flex items-center font-medium justify-center md:w-[120px] bg-white text-[#095EDC]  hover:bg-[#095EDC] hover:text-white transition-colors duration-300">Adult Shoes</button>
+    <button className="w-full h-20 p-2 border border-[#095EDC] rounded-lg flex items-center font-medium justify-center md:w-[120px] bg-white text-[#095EDC]  hover:bg-[#095EDC] hover:text-white transition-colors duration-300">Kiddies shoes</button>
+    <button className="w-full h-20 p-2 border border-[#095EDC] rounded-lg flex items-center font-medium justify-center md:w-[120px] bg-white text-[#095EDC]  hover:bg-[#095EDC] hover:text-white transition-colors duration-300">Wholesales</button>
+    <button className="w-full h-20 p-2 border border-[#095EDC] rounded-lg flex items-center font-medium justify-center md:w-[120px] bg-white text-[#095EDC]  hover:bg-[#095EDC] hover:text-white transition-colors duration-300">More</button>
 </div>
         <form className="flex flex-col mt-4">
             <input
@@ -43,7 +43,7 @@ return (
             className="border border-gray-300 p-2 w-full h-[200px] p-0 placeholder-top"
             placeholder="Describe your experience (Optional)"
             />
-            <button className="bg-blue-500 text-white px-4 py-2 mt-2 w-full md:w-[200px] rounded-md hover:bg-blue-600">Post Review</button>
+            <button className="bg-[#095EDC] text-white px-4 py-2 mt-2 w-full md:w-[200px] rounded-md hover:bg-blue-600">Post Review</button>
         </form>
         </div>
     </div>

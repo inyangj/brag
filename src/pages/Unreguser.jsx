@@ -43,10 +43,10 @@ const Unreguser = () => {
 </div>
           <h4 className="text-center mt-4 md:mt-8">Indicate the services you're reviewing for</h4>
           <div className="grid grid-cols-1 md:grid-cols-4 justify-items-center mt-5" style={{ gap: '0' }}>
-  <button className="w-full h-20 p-2 border border-gray-300 rounded-lg flex items-center justify-center md:w-[120px] bg-white text-[#095EDC] focus:outline-none hover:bg-blue-500 hover:text-white transition-colors duration-300">Adult Shoes</button>
-  <button className="w-full h-20 p-2 border border-gray-300 rounded-lg flex items-center justify-center md:w-[120px] bg-white text-[#095EDC] focus:outline-none hover:bg-blue-500 hover:text-white transition-colors duration-300">Kiddies shoes</button>
-  <button className="w-full h-20 p-2 border border-gray-300 rounded-lg flex items-center justify-center md:w-[120px] bg-white text-[#095EDC] focus:outline-none hover:bg-blue-500 hover:text-white transition-colors duration-300">Wholesales</button>
-  <button className="w-full h-20 p-2 border border-gray-300 rounded-lg flex items-center justify-center md:w-[120px] bg-white text-[#095EDC] focus:outline-none hover:bg-blue-500 hover:text-white transition-colors duration-300">More</button>
+  <button className="w-full h-20 p-2 border border-[#095EDC] rounded-lg flex items-center justify-center md:w-[120px] bg-white text-[#095EDC]  hover:bg-blue-500 hover:text-white transition-colors duration-300">Adult Shoes</button>
+  <button className="w-full h-20 p-2 border border-[#095EDC] rounded-lg flex items-center justify-center md:w-[120px] bg-white text-[#095EDC]  hover:bg-blue-500 hover:text-white transition-colors duration-300">Kiddies shoes</button>
+  <button className="w-full h-20 p-2 border border-[#095EDC] rounded-lg flex items-center justify-center md:w-[120px] bg-white text-[#095EDC]  hover:bg-blue-500 hover:text-white transition-colors duration-300">Wholesales</button>
+  <button className="w-full h-20 p-2 border border-[#095EDC] rounded-lg flex items-center justify-center md:w-[120px] bg-white text-[#095EDC]  hover:bg-blue-500 hover:text-white transition-colors duration-300">More</button>
 </div>
           <form className="flex flex-col mt-4">
             <input
