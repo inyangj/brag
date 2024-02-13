@@ -8,6 +8,8 @@ const Forgotpassword = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  
+  const url = import.meta.env.VITE_APP_BASE_URL;
 
   const handleInputChange = (e) => {
     setEmail(e.target.value);
@@ -18,7 +20,7 @@ const Forgotpassword = () => {
 
     try {
       setIsLoading(true);
-      const response = await axios.post("/api/forgot-password", { email });
+      const response = await axios.post(`${url}/users/forgot-password`, { email });
 
       if (response.status === 200) {
         toast.success("Password reset email sent!");
