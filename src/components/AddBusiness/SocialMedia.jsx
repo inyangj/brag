@@ -7,7 +7,7 @@ function SocialMedia() {
     setSocialMediaHandle(e.target.value);
   };
   return (
-    <div className="mx-16">
+    <div className="mx-6 md:mx-16">
       <p className="text-[16px] font-semibold mt-4">Social media handles</p>
       <div className="mb-4">
         <label

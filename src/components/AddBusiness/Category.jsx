@@ -22,7 +22,7 @@ const Category = () => {
   ];
 
   return (
-    <div className="mx-16 mt-2">
+    <div className="mx-6 md:mx-16 mt-2">
       <p className="text-[16px] font-semibold">Business category</p>
       <div className="flex items-center">
         <label htmlFor="category"></label>
