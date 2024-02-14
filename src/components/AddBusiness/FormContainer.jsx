@@ -123,12 +123,7 @@ const FormContainer = () => {
       const response = await axios.post(
         `${url}/businesses/createBusiness`,
         formData,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YmIwZGFlYzk2NTM4ZmI2NGUwMGQxYSIsImlhdCI6MTcwNjc3Njg4OCwiZXhwIjoxNzA5MzY4ODg4fQ.gsmFSSvy9AEeUUV56jMpbJqIQQYrFSb6s--t2lv7Fyc",
-          },
-        }
+        
       );
       setSubmitBtnText("Submitted!");
       resetForm();
