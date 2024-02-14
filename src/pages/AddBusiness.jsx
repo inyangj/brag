@@ -15,7 +15,7 @@ function AddBusiness() {
     <div>
       <Nav />
       <Hero />
-      <LogoInput />
+      {/* <LogoInput /> */}
       <FormContainer />
 
       {/* <div className="grid grid-cols-2 mx-6 md:grid md:grid-cols-5 lg:grid-cols-3 md:gap-4 md:mx-16 xl:grid-cols-5 ">

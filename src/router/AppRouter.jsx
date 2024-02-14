@@ -56,7 +56,10 @@ const AppRouter = () => {
           <>
           
             <Route path={`/brag`} element={<Layout  setIsLoggedIn={setIsLoggedIn}/>}>
-              <Route path={`/brag/business/view`} element={<UserBusinessView />} />
+              <Route path={`/brag/business/:id`} element={<UserBusinessView />} />
+              {/* <Route path={`/brag/business/main`} element={<Business />}>
+                  <Route path={`/brag/business/main`} element={<ServiceReview />} />
+                </Route> */}
               <Route path={`/brag`} element={<UserHome />} />
               {hasBusiness ? (
                 <Route path={`/brag/business`} element={<Business />}>

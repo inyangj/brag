@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import Input from "../element/Input";
+import LogoInput from "./LogoInput";
 
 const Form = ({
   formData,
-  handleInputChange,
-  handleSubmit,
-  selectedCategory,
+  handleChange,
+  handleImageChange,
+  handleServiceChange,
   handleCategoryChange,
+
+
+  handleSubmit,
   selectedStartDay,
   handleStartDayChange,
   selectedEndDay,
@@ -59,22 +63,23 @@ const Form = ({
     "9:00 PM",
   ];
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
 
-    if (file) {
-      const reader = new FileReader();
+  //   if (file) {
+  //     const reader = new FileReader();
 
-      reader.onload = () => {
-        setSelectedImage(reader.result);
-      };
+  //     reader.onload = () => {
+  //       setSelectedImage(reader.result);
+  //     };
 
-      reader.readAsDataURL(file);
-    }
-  };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   return (
     <form className="mx-6 md:mx-16" onSubmit={handleSubmit}>
+   
       <div className="mb-4">
         <label htmlFor="businessName" className="text-[16px] font-semibold">
           Business Name:
@@ -85,7 +90,7 @@ const Form = ({
           name="businessName"
           id="businessName"
           value={formData.businessName}
-          onChange={handleInputChange}
+          onChange={handleChange}
           placeholder="Add a business name here"
           className="border rounded-lg border-gray-300 p-2 w-full"
           required
@@ -99,45 +104,26 @@ const Form = ({
           name="businessMail"
           id="businessMail"
           value={formData.businessMail}
-          onChange={handleInputChange}
+          onChange={handleChange}
           placeholder="Add an active business mail here"
           className="border rounded-lg border-gray-300 p-2 w-full"
           required
         />
       </div>
       <div className="mb-4">
-        <p className="text-[16px] font-semibold">Services</p>
-        <input
-          type="text"
-          name="service1"
-          id="service1"
-          value={formData.service1}
-          onChange={handleInputChange}
-          placeholder="Shoes"
-          className="border rounded-lg border-gray-300 p-2 w-full"
-          required
-        />
-        <input
-          type="text"
-          name="service2"
-          id="service2"
-          value={formData.service2}
-          onChange={handleInputChange}
-          placeholder="Kiddies footies"
-          className="border rounded-lg border-gray-300 p-2 mt-2 w-full"
-          required
-        />
-        <input
-          type="text"
-          name="service3"
-          id="service3"
-          value={formData.service3}
-          onChange={handleInputChange}
-          placeholder="Add more services"
-          className="border rounded-lg border-gray-300 p-2 mt-2 w-full"
-          required
-        />
-      </div>
+    <p className="text-[16px] font-semibold">Services</p>
+    {formData.services.map((service, index) => (
+      <input
+        key={index}
+        type="text"
+        value={service}
+        onChange={(e) => handleServiceChange(index, e.target.value)}
+        placeholder={`Service ${index + 1}`}
+        className="border rounded-lg border-gray-300 p-2 mt-2 w-full"
+        required
+      />
+    ))}
+  </div>
 
       <div className="mb-4">
         <p className="text-[16px] font-semibold">Location</p>
@@ -146,7 +132,7 @@ const Form = ({
           name="location"
           id="location"
           value={formData.location}
-          onChange={handleInputChange}
+          onChange={handleChange}
           placeholder="e.g Port harcourt"
           className="border rounded-lg border-gray-300 p-2 w-full"
           required
@@ -159,7 +145,7 @@ const Form = ({
           name="phoneNumber"
           id="phoneNumber"
           value={formData.phoneNumber}
-          onChange={handleInputChange}
+          onChange={handleChange}
           placeholder="Add phone number here"
           className="border rounded-lg border-gray-300 p-2 w-full"
           required
@@ -171,12 +157,13 @@ const Form = ({
         <div className="flex items-center">
           <label htmlFor="category"></label>
           <select
-            id="category"
-            value={selectedCategory}
-            onChange={handleCategoryChange}
-            placeholder="e.g makeup and beauty"
-            className="border rounded-lg border-gray-300 p-2 w-full"
-          >
+        id="businessCategory"
+        name="businessCategory"
+        value={formData.businessCategory}
+        onChange={handleCategoryChange}
+        placeholder="e.g makeup and beauty"
+        className="border rounded-lg border-gray-300 p-2 w-full"
+      >
             {categoryOptions.map((category, index) => (
               <option key={index} value={category}>
                 {category}
@@ -200,7 +187,7 @@ const Form = ({
                 name="startDay"
                 value={selectedStartDay}
                 onChange={handleStartDayChange}
-                className="pl-8 pr-2 py-2 block w-1/2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200"
+                className="pl-8 pr-2 py-2 block  border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200"
               >
                 {daysOptions.map((day, index) => (
                   <option key={index} value={day}>
@@ -221,7 +208,7 @@ const Form = ({
                 name="endDay"
                 value={selectedEndDay}
                 onChange={handleEndDayChange}
-                className="pl-8 pr-2 py-2 block w-1/2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200"
+                className="pl-8 pr-2 py-2 block  border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200"
               >
                 {daysOptions.map((day, index) => (
                   <option key={index} value={day}>
@@ -242,7 +229,7 @@ const Form = ({
                 name="startTime"
                 value={selectedStartTime}
                 onChange={handleStartTimeChange}
-                className="pl-8 pr-2 py-2 block w-1/2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200"
+                className="pl-8 pr-2 py-2 block  border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200"
               >
                 {hoursOptions.map((hour, index) => (
                   <option key={index} value={hour}>
@@ -264,7 +251,7 @@ const Form = ({
                 name="endTime"
                 value={selectedEndTime}
                 onChange={handleEndTimeChange}
-                className="pl-8 pr-2 py-2 block w-1/2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200"
+                className="pl-8 pr-2 py-2 block  border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200"
               >
                 {hoursOptions.map((hour, index) => (
                   <option key={index} value={hour}>

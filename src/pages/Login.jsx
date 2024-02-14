@@ -33,8 +33,8 @@ const Login = ({setIsLoggedIn}) => {
       if (response.status === 200) {
         toast.success('Login successful!');
         localStorage.setItem('userData', JSON.stringify(response.data));
-        const { refreshToken, ...data } = response.data;
-        localStorage.setItem('token', JSON.stringify(refreshToken));
+        const { token, ...data } = response.data;
+        localStorage.setItem('token', JSON.stringify(token));
       localStorage.setItem('user', JSON.stringify(data));
       console.log(`User Object ${data}, 
        hasBusiness : ${data.data.hasBusiness}`)

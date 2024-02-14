@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faFilter } from '@fortawesome/free-solid-svg-icons'
 import axios from '../../utility/Axios';
+import { useNavigate } from 'react-router-dom';
 
 const Search = ({className, children}) => {
     const [term, setTerm] = useState('');
@@ -9,6 +10,8 @@ const Search = ({className, children}) => {
   
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [suggestions, setSuggestions] = useState(null);
+
+    const navigate = useNavigate();
 
     const onInputChange = async (e) => {
         try {
@@ -36,7 +39,39 @@ const Search = ({className, children}) => {
         }
       };
 
-    const handleSubmit = (e) => {
+      const handleSuggestionClick = (suggestion) => {
+            // setTerm(suggestion);
+            setShowSuggestions(false);
+            // Optionally, you can automatically submit the form here
+            console.log(suggestion);
+            navigate(`/brag/business/${suggestion}`);
+          };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            setTerm(e.target.value);
+            const value = e.target.value;
+            if (value) {
+              setShowSuggestions(true);
+              setIsLoading(true);
+      
+              const response = await axios.get(
+                `/businesses/businessSearch/${value}`
+              );
+      
+              console.log(response.data.doc);
+      
+              setSuggestions(response.data.doc);
+            } else {
+              setShowSuggestions(false);
+              setSuggestions([]);
+            }
+          } catch (error) {
+            console.error(error.response);
+          } finally {
+            setIsLoading(false);
+          }
         
     }
 
@@ -62,7 +97,7 @@ const Search = ({className, children}) => {
                 <li
                   key={index}
                   className="cursor-pointer px-4 py-2 hover:bg-white/20 font-heebo"
-                  onClick={() => handleSuggestionClick(suggestion.businessName)}
+                  onClick={() => handleSuggestionClick(suggestion.id)}
                 >
                   {suggestion.businessName}
                 </li>

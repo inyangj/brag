@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import pic1 from '../../assets/business/business.jpg'
 import pic2 from '../../assets/business/business1.jpg'
@@ -8,10 +8,13 @@ import review from '../../assets/business/review.png'
 import logo from '../../assets/logo.png'
 import { useQuery } from "@tanstack/react-query";
 import { featuredBusiness } from '../../utility/fetch'
+import StarRating from '../StarRating'
+import RatingOnly from '../RatingOnly'
 
 const FeaturedBusiness = ({productsToShow}) => {
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     // const products = [
     //   {
@@ -99,7 +102,11 @@ const FeaturedBusiness = ({productsToShow}) => {
 useEffect( () => {
   setProducts(business.data)
 },[])
-console.log(products)
+const handleClick = (product) => {
+  
+  navigate(`/brag/business/${product}`);
+};
+
  
 
   return (
@@ -109,12 +116,13 @@ console.log(products)
         <aside className='grid gap-6 md:gap-9 justify-center  lg:grid-cols-2'>
           {/* <Link to={`/products`} state={location.state} className='text-center  w-fit px-3 py-5 md:px-6 md:py-10 rounded-[10px] bg-[#095EDC] text-white'>View All</Link> */}
           {Array.isArray(products) && products.slice(0, productsToShow).map((product, index) => (
-            <div key={index} className="business text-xl md:text-2xl grid gap-3 justify-center w-fit px-3 py-5 md:px-6 md:py-10 rounded-[10px]">
+            <div onClick={() => handleClick(product.id)} key={index} className="business text-xl md:text-2xl grid gap-3 justify-center w-fit px-3 py-5 md:px-6 md:py-10 rounded-[10px]">
                <img src={product.logo?.logoUrl || logo} className=' rounded-[10px] w-full' alt="business-logo" />
             <p>{product.businessName}</p>
             <div className='flex items-center gap-2'>
-              <img src={product.ratings} className='w-1/2 md:w-2/3 ' alt="review" />
-              <p className='md:text-lg'>{product.reviewText}</p>
+              <RatingOnly rating={product.averageRating} />
+              {/* <img src={product.ratings} className='w-1/2 md:w-2/3 ' alt="review" /> */}
+              <p className='md:text-lg'>{`${product.averageRating} (${product.reviewCount} reviews)`}</p>
             </div>
             {product.services.map((service, index) => ( <p key={index}>{service}</p>))}
            
