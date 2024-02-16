@@ -11,6 +11,7 @@ import FormContainer from "../components/AddBusiness/FormContainer";
 import LogoInput from "../components/AddBusiness/LogoInput";
 import ProfileLogoBox from "../components/Profile/ProfileLogoBox";
 import Buttons from "../components/Profile/Buttons";
+import ProfileForm from "../components/Profile/ProfileForm";
 
 function ProfilePage() {
   return (
@@ -19,6 +20,8 @@ function ProfilePage() {
       <ProfileHero />
       <PersonalInfo />
       <FormContainer />
+
+
       <Buttons />
 
       {/* <div>

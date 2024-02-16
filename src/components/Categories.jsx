@@ -73,7 +73,7 @@ const Categories = () => {
     <div className=' mt-[76px] mb-[76px]'>
          <h2 className='text-2xl md:text-3xl font-bold text-center text-[#095EDC] mb-9'>Categories</h2>
 
-         <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10  '>
+         <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10  '>
             {categories.map((category) => (
                 <div key={category.id} className='border border-[#0000004D] p-12 rounded-xl min-w-[275px] grid place-items-center'>
                     <img src={category.image}  alt={category.alt} />
