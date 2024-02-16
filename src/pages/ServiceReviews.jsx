@@ -1,120 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import facebook from '../assets/review/facebook.svg';
-import star from '../assets/review/star.svg'
+import { useQuery } from '@tanstack/react-query';
+import axios from '../utility/Axios';
+import RatingOnly from '../components/RatingOnly';
+import ReviewSkeleton from '../utility/ReviewLoad';
 
-import { useParams } from 'react-router-dom';
-import { icon } from '@fortawesome/fontawesome-svg-core';
-
-const ServiceReview = () => {
-  const { serviceId } = useParams();
+const ServiceReview = ({business}) => {
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const [reviews, setReviews] = useState([]);
+
+  const getReviews = async () => {
+    try {
+      const response = await axios.get(`/reviews/${business}`);
+      setReviews(response.data.data);
+      console.log("reviews", response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const {
+    data,
+    isLoading,
+    error,
+  } = useQuery({ queryKey: ["getReviews"], queryFn: getReviews });
+
+  if (isLoading) {
+    return <ReviewSkeleton />;
+  }
+    
+  
 
 
 
-  const reviews = [
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-    {
-        icon1: facebook,
-        icon2: star,
-        date: '13 Jun 2023',
-        name: 'Peter Mark',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quisquam quis, itaque molestiae hic, quam ducimus nisi illo cumque eos repudiandae quae nesciunt error nostrum ratione eius beatae corrupti aperiam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam inventore numquam quod doloremque labore asperiores. Quaerat molestiae inventore sapiente velit ducimus. Quaerat recusandae ducimus, odio maiores est modi repellendus.'
-
-    },
-  ]
 
   const toggleShowAllReviews = () => {
     setShowAllReviews((prev) => !prev);
   };
 
-  // Determine the number of reviews to display based on the state
   const displayedReviews = showAllReviews ? reviews : reviews.slice(0, 4);
-
-
-  // Fetch and display reviews for the selected service
-  // You can customize this part based on your actual data structure and API
   return (
     <div>
-      <h2>Reviews for {serviceId}</h2>
+      {/* <h2>Reviews for {reviews.name}</h2> */}
       {/* Display reviews here */}
 
 <div className='grid gap-5 md:gap-10'>
@@ -127,14 +54,14 @@ const ServiceReview = () => {
         <div key={index}>
           <div className='bg-[#D9D9D933] p-5 md:p-10 lg:p-14 rounded-xl'>
             <div className='flex justify-between gap-4 md:gap-0 flex-wrap md:flex-nowrap items-center'>
-                <img src={review.icon1} alt="icon" />
-                <img src={review.icon2} alt="icon" />
+                <img src={facebook} alt="icon" />
+                <RatingOnly rating={review.ratings}/>
                 <p>{review.date}</p>
             </div>
             <div className='md:text-xl lg:text-2xl'>
-                <h3 className='font-medium text-xl md:text-3xl mt-5 md:mt-10 mb-3 '>{review.name}</h3>
-                <p>{review.review}</p>
-                <p className='text-[#095EDC] mt-6 md:mt-11 lg:mt-14'>Respond</p>
+                <h3 className='font-medium text-xl md:text-3xl mt-5 md:mt-10 mb-3 '>{review.reviewerName}</h3>
+                <p>{review.reviewText}</p>
+                {/* <p className='text-[#095EDC] mt-6 md:mt-11 lg:mt-14'>Respond</p> */}
             </div>
           </div>
         </div>
@@ -142,6 +69,7 @@ const ServiceReview = () => {
       )}
 
 </div>
+
 
 
 {reviews.length > 4 && (

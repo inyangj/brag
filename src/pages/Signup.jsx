@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,11 +25,21 @@ const Signup = () => {
       [name]: value,
     });
   };
+
   const url = import.meta.env.VITE_APP_BASE_URL;
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
+    if (!formData.fullname || !formData.email || !formData.password) {
+      setError("Please fill in all fields.");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
     if (formData.password.length < 8) {
       setError("Password must be at least 8 characters long.");
       return;
@@ -47,7 +59,7 @@ const Signup = () => {
         toast.success("Registration successful!");
         localStorage.setItem("userData", response.data);
         setIsLoading(false);
-        setShowModal(true); 
+        setShowModal(true);
       } else {
         toast.error("Registration unsuccessful.");
       }
@@ -58,6 +70,10 @@ const Signup = () => {
 
   const closeModal = () => {
     setShowModal(false);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -99,15 +115,24 @@ const Signup = () => {
               />
             </div>
             <div className="mb-2 relative">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                placeholder="Password"
-                className="p-3 w-full rounded-tl-[5px] rounded-br-[5px] mt-3"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"} 
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  placeholder="Password"
+                  className="p-3 w-full rounded-tl-[5px] rounded-br-[5px] mt-3"
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 focus:outline-none"
+                >
+                  {showPassword ? <FiEyeOff /> : <FiEye />}
+                </button>
+              </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}
             </div>
             <div className="flex items-center justify-center">
@@ -127,7 +152,6 @@ const Signup = () => {
             </div>
           </form>
         </div>
-        {/* Modal */}
         {showModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
             <div className="bg-white p-8 rounded-md shadow-md text-center">

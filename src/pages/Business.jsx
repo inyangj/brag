@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import profile from "../assets/business/profile.jpeg";
 import TextRender from "../components/business/TextRender";
 import Services from "../components/business/Services";
@@ -7,20 +7,66 @@ import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Images from "../components/business/Images";
 import { Outlet } from "react-router-dom";
+import axios from "../utility/Axios";
+import {BusinessNameProvider} from '../utility/BusinessContext'
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import ServiceReview from "./ServiceReviews";
 
 const Business = () => {
   const [copied, setCopied] = useState(false);
+  const [business, setBusiness] = useState([]);
+  const getMyBusiness = async () => {
+    try {
+      const response = await axios.get(`businesses/my-business/business`);
+      setBusiness(response.data.data);
+      console.log(response.data.data);
+      
+      
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    getMyBusiness();
+  }, []);
 
-  const id = "jddhsjkcdhkhsdk";
+  if (!business || business.length === 0) {
+    return null; // or loading indicator
+  }
+
+  const lastBusiness = business[business.length - 1];
+  const {
+    id,
+    slug,
+    businessName,
+    businessMail,
+    businessCategory,
+    description,
+    image,
+    location,
+    phoneNumber,
+    instagram,
+    twitter,
+    facebook,
+    user,
+    logo,
+    services,
+  } = lastBusiness;
 
   const handleCopy = () => {
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
     }, 1500);
+
   };
+  
+
+
   return (
+    <BusinessNameProvider initialBusinessName={businessName}>
     <div>
       <section className="flex mt-10 bg-[#095EDC2B] justify-center items-center h-[10rem] md:h-[22rem]">
         <h2 className="text-3xl md:text-6xl font-bold">Business Content</h2>
@@ -32,13 +78,13 @@ const Business = () => {
             <button></button>
         </div> */}
         <section className="md:flex items-center gap-8 md:gap-14">
-          <img src={profile} className="w-[305px] h-[249px]" alt="profile" />
+          <img src={logo?.logoUrl} className="w-[305px] h-[249px]" alt="profile" />
           <div className="w-full pt-5 grid gap-5 md:gap-10">
             <TextRender
               title={`Business name`}
-              content={`ShoeCorner Nigeria`}
+              content={`${businessName}`}
             />
-            <TextRender title={`Business category`} content={`Products`} />
+            <TextRender title={`Business category`} content={`${businessCategory}`} />
           </div>
         </section>
 
@@ -47,21 +93,22 @@ const Business = () => {
           <Services
             styleName={`grid gap-5 md:gap-10`}
             className={`border-[#A9A9A9] text-2xl rounded-[10px] py-4 pl-8 `}
+            services={services}
           />
           <div className=" ">
-            <button className="bg-[#095EDC] text-white py-5 px-3 rounded-[10px] text-2xl">
+            {/* <button className="bg-[#095EDC] text-white py-5 px-3 rounded-[10px] text-2xl">
               + Add more services
-            </button>
+            </button> */}
 
             <p className=" text-lg md:text-2xl mt-9 mb-2">
               Share this links to get reviews from customers
             </p>
             <div className="flex items-center gap-2 ">
               <p className="text-[#095EDC] md:text-xl">
-                http://localhost:5173/business/{id}
+                http://localhost:5173/brag/business/{id}
               </p>
               <CopyToClipboard
-                text={`http://localhost:5173/brag/review/${id}`}
+                text={`http://localhost:5173/brag/business/${id}`}
                 onCopy={handleCopy}
               >
                 <FontAwesomeIcon icon={copied ? faCheck : faCopy} />
@@ -71,7 +118,7 @@ const Business = () => {
         </section>
 
         <section className="my-[43px]">
-          <Images />
+          <Images images={image} />
         </section>
         <section>
           <h2 className="text-xl rounded-[10px] text-[#095EDC] font-medium mx-auto border w-fit shadow-sm mb-7 p-3 md:p-5">
@@ -81,12 +128,17 @@ const Business = () => {
           <Services
             styleName={`flex justify-center items-center flex-wrap gap-5 md:gap-[53px]`}
             className={` py-4 px-3 rounded-[10px] text-[#095EDC] border-[#095EDC] `}
+            services={services}
           />
-          <Outlet />
-          {/* <ServiceReview /> */}
+          {/* <Outlet businessName={businessName} /> */}
+          <div className="mt-5">
+
+          <ServiceReview business={lastBusiness?.slug} />
+          </div>
         </section>
       </div>
     </div>
+    </BusinessNameProvider>
   );
 };
 

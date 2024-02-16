@@ -1,0 +1,7 @@
+/* Banner.module.css */
+.banner {
+    background-image: url('https://my.spline.design/3dtextbluecopy-1ccf098f616fa15f9960ce6676d81cb7/');
+    background-size: cover;
+    background-position: center;
+    height: 300px; /* Adjust height as needed */
+}

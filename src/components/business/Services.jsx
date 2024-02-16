@@ -1,25 +1,25 @@
 import React from 'react'
 import {Outlet} from 'react-router-dom'
 
-const Services = ({className, styleName}) => {
+const Services = ({className, styleName, services, onClick}) => {
 
-   const Services=[
+  //  const services=[
      
-        "Snacks",
-        "Clothings",
-        "Restaurant",
-        "Entertainment",
+  //       "Snacks",
+  //       "Clothings",
+  //       "Restaurant",
+  //       "Entertainment",
        
-   ]
+  //  ]
 
 
 
 
   return (
     <div className={`${styleName} `}>
-        {Services.map((service, index)=>(
+        {services?.map((service, index)=>(
             
-                <p key={index} className={`border   ${className}  `}>{service}</p>
+                <p key={index} className={`border   ${className}  `} onClick={() => onClick(service)}>{service}</p>
            
         ))}
 

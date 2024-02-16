@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
@@ -7,8 +7,18 @@ import Search from "../components/home/Search";
 import FeaturedBusiness from "../components/home/FeaturedBusiness";
 import tick from "../assets/business/tick.svg";
 import AboutUs from "../components/home/AboutUs";
+import GetStartedModal from "../components/GetStartedModal";
 
-const Home = () => {
+const Home = ({setIsLoggedIn}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.clear();
+
+  
+  };
+
   return (
     <div className="relative ">
       <header>
@@ -24,9 +34,12 @@ const Home = () => {
               Our community of users shares their genuine experiences, ensuring
               you get the most accurate information.
             </p>
-            <button className="bg-[#095EDC] text-white px-4 py-2 rounded text-lg hover:bg-blue-600 font-semibold focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+            <button onClick={() => setIsModalOpen(true)} className="bg-[#095EDC] text-white px-4 py-2 rounded text-lg hover:bg-blue-600 font-semibold focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
               Get Started
             </button>
+
+            <button onClick={handleLogout}>logout</button>
+            <GetStartedModal isOpen={isModalOpen} onClose={setIsModalOpen} />
           </div>
         </section>
       </header>

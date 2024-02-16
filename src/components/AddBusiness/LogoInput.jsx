@@ -1,17 +1,22 @@
-// LogoBox.js
+import React, { useState, useEffect } from "react";
 
-import React, { useState } from "react";
+const LogoInput = ({ handleLogoChange, logo }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
 
-const LogoInput = () => {
-  const [logo, setLogo] = useState(null);
+  // useEffect(() => {
+  //   if (logo) {
+  //     setSelectedImage(URL.createObjectURL(logo));
+  //   }
+  // }, [logo]);
 
-  const handleLogoChange = (e) => {
-    const selectedLogo = e.target.files[0];
-    setLogo(URL.createObjectURL(selectedLogo));
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedImage(URL.createObjectURL(file));
+    handleLogoChange(file);
   };
 
   return (
-    <div className="mx-16">
+    <div className="mx-6 md:mx-16">
       <h4 className="py-4">
         Fill in the details below to add your business on BRAG
       </h4>
@@ -20,8 +25,8 @@ const LogoInput = () => {
         * Information is required to complete registration
       </p>
       <div className="flex items-center justify-center border border-gray-300 p-4 w-48 h-48">
-        {logo ? (
-          <img src={logo} alt="User Logo" className="max-w-full max-h-full" />
+        {selectedImage ? (
+          <img src={selectedImage} alt="User Logo" className="max-w-full max-h-full" />
         ) : (
           <label htmlFor="logoInput" className="cursor-pointer">
             <div className="text-center">
@@ -46,7 +51,7 @@ const LogoInput = () => {
               id="logoInput"
               accept="image/*"
               className="hidden"
-              onChange={handleLogoChange}
+              onChange={handleImageChange}
             />
           </label>
         )}
