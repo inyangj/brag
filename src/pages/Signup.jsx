@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Signup = () => {
@@ -130,7 +132,8 @@ const Signup = () => {
                   onClick={togglePasswordVisibility}
                   className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 focus:outline-none"
                 >
-                  {showPassword ? <FiEyeOff /> : <FiEye />}
+                  <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />  
+                  {/* {showPassword ? <FiEyeOff /> : <FiEye />} */}
                 </button>
               </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}
