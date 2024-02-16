@@ -16,13 +16,13 @@ const Nav = ({className, hasBusiness}) => {
         <Li to="/brag" style={getLinkStyle("/brag")}>
           Home
         </Li>
-        <Li to="/review" style={getLinkStyle("/review")}>
+        <Li to="" style={getLinkStyle("/review")}>
         Review
         </Li>
         <Li to="/brag/business" style={getLinkStyle("/brag/business")}>
         {hasBusiness ? "Add Business" : "My Business"}
         </Li>
-        <Li to="/profile" style={getLinkStyle("/profile")}>
+        <Li to="" style={getLinkStyle("/profile")}>
         Profile
         </Li>
       </ul>
