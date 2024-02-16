@@ -12,7 +12,7 @@ const Nav = ({className, hasBusiness}) => {
       <h1 className="font-bold text-2xl md:text-[2.5rem] text-[#095EDC]">
         BRAG
       </h1>
-      <ul className="flex gap-2 md:gap-11 justify-between items-center text-xs md:text-2xl">
+      <ul className="flex gap-2 md:gap-11 justify-between items-center text-xs md:text-base">
         <Li to="/brag" style={getLinkStyle("/brag")}>
           Home
         </Li>
@@ -20,7 +20,7 @@ const Nav = ({className, hasBusiness}) => {
         Review
         </Li>
         <Li to="/brag/business" style={getLinkStyle("/brag/business")}>
-        {hasBusiness ? "My Business" : "Add Business"}
+        {hasBusiness ? "Add Business" : "My Business"}
         </Li>
         <Li to="/profile" style={getLinkStyle("/profile")}>
         Profile

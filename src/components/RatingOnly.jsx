@@ -5,7 +5,7 @@ const RatingOnly = ({ rating }) => {
     <ReactStars
       count={5}
       value={rating}
-      size={24}
+      size={34}
       half={true}
       color1={'#f4c10f'}
       color2={'#f4c10f'}

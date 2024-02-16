@@ -30,11 +30,13 @@ const AppRouter = () => {
     if (user && token) {
       setIsLoggedIn(true);
       // Assuming 'hasBusiness' is a boolean stored in localStorage
-      const data = localStorage.getItem("user");
-      const hasBusiness = data?.data?.hasBusiness
-      setHasBusiness(hasBusiness);
+      const profile = JSON.parse(localStorage.getItem("user"));
+      
+      setHasBusiness(profile.data.hasBusiness);
     }
   }, []);
+
+  console.log("hasBusiness", hasBusiness)
 
   
   return (
@@ -57,9 +59,6 @@ const AppRouter = () => {
           
             <Route path={`/brag`} element={<Layout  setIsLoggedIn={setIsLoggedIn}/>}>
               <Route path={`/brag/business/:id`} element={<UserBusinessView />} />
-              {/* <Route path={`/brag/business/main`} element={<Business />}>
-                  <Route path={`/brag/business/main`} element={<ServiceReview />} />
-                </Route> */}
               <Route path={`/brag`} element={<UserHome />} />
               {hasBusiness ? (
                 <Route path={`/brag/business`} element={<Business />}>
