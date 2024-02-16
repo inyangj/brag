@@ -108,7 +108,7 @@ const Business = () => {
                 http://localhost:5173/brag/business/{id}
               </p>
               <CopyToClipboard
-                text={`http://localhost:5173/brag/business/${id}`}
+                text={`https://brag-chi.vercel.app/brag/business/${id}`}
                 onCopy={handleCopy}
               >
                 <FontAwesomeIcon icon={copied ? faCheck : faCopy} />
