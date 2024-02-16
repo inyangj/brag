@@ -105,7 +105,7 @@ const Business = () => {
             </p>
             <div className="flex items-center gap-2 ">
               <p className="text-[#095EDC] md:text-xl">
-                http://localhost:5173/brag/business/{id}
+              https://brag-chi.vercel.app/brag/business/{id}
               </p>
               <CopyToClipboard
                 text={`https://brag-chi.vercel.app/brag/business/${id}`}
