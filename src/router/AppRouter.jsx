@@ -36,7 +36,7 @@ const AppRouter = () => {
     }
   }, []);
 
-  console.log("hasBusiness", hasBusiness);
+
 
   return (
     <BrowserRouter>
@@ -58,37 +58,7 @@ const AppRouter = () => {
         <Route path={`/Reguser`} element={<Reguser />} />
         <Route path={`/Unreguser`} element={<Unreguser />} />
         <Route path={`/profile`} element={<ProfilePage />} />
-
-        {isLoggedIn ? (
-          <>
-            <Route
-              path={`/brag`}
-              element={<Layout setIsLoggedIn={setIsLoggedIn} />}
-            >
-              <Route path={`/brag`} element={<UserHome />} />
-              <Route path={`/brag/business/:id`} element={<UserBusinessView />} />
-              {hasBusiness ? (
-                <Route path={`/brag/business`} element={<Business />}>
-                  <Route path={`/brag/business/`} element={<ServiceReview />} />
-                </Route>
-              ) : (
-                <Route path={`/brag/business`} element={<AddBusiness />} />
-              )}
-            </Route>
-            <Route path={`/addBusiness`} element={<AddBusiness />} />
-          </>
-        ) : (
-          <Route path="*" element={<Navigate to="/login" />} />
-        )}
-      </Routes>
-    </BrowserRouter>
-  );
-};
-
-export default AppRouter;
-
-{
-  /* <>
+        <>
           
           <Route path={`/brag`} element={<Layout  setIsLoggedIn={setIsLoggedIn}/>}>
             <Route path={`/brag/business/:id`} element={<UserBusinessView />} />
@@ -103,5 +73,38 @@ export default AppRouter;
           </Route>
           <Route path={`/addBusiness`} element={<AddBusiness />} />
           
-        </> */
-}
+        </> 
+        
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default AppRouter;
+
+
+
+
+
+// {isLoggedIn ? (
+//   <>
+//     <Route
+//       path={`/brag`}
+//       element={<Layout setIsLoggedIn={setIsLoggedIn} />}
+//     >
+//       <Route path={`/brag`} element={<UserHome />} />
+//       <Route path={`/brag/business/:id`} element={<UserBusinessView />} />
+//       {hasBusiness ? (
+//         <Route path={`/brag/business`} element={<Business />}>
+//           <Route path={`/brag/business/`} element={<ServiceReview />} />
+//         </Route>
+//       ) : (
+//         <Route path={`/brag/business`} element={<AddBusiness />} />
+//       )}
+//     </Route>
+//     <Route path={`/addBusiness`} element={<AddBusiness />} />
+//   </>
+// ) : (
+//   <Route path="*" element={<Navigate to="/login" />} />
+// )}
+
