@@ -22,45 +22,24 @@ import RequireAuth from "../utility/RequireAuth";
 import Missing from "../pages/Missing";
 
 const AppRouter = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [hasBusiness, setHasBusiness] = useState(false);
 
   useEffect(() => {
-    // Check if user or token is saved in localStorage
-    const user = JSON.parse(localStorage.getItem("user"))
-    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
     const hasBusiness = user?.data.hasBusiness;
-
     if (hasBusiness) {
       setHasBusiness(true);
     }
-
-
-
-    if (user && token) {
-      const profile = JSON.parse(localStorage.getItem("user"));
-      setIsLoggedIn(true);
-      
-
-      
-    }
   }, []);
 
-console.log(`hasBusiness for Router ${hasBusiness}`);
+  console.log(`hasBusiness for Router ${hasBusiness}`);
 
   return (
     <BrowserRouter>
-      <Nav hasBusiness={hasBusiness} className={`hidden`} />
+      <Nav className={`hidden`} />
       <Routes>
-        <Route
-          index
-          path={"/"}
-          element={<Home />}
-        />
-        <Route
-          path={`/login`}
-          element={<Login />}
-        />
+        <Route index path={"/"} element={<Home />} />
+        <Route path={`/login`} element={<Login />} />
         <Route path={`/signup`} element={<Signup />} />
         <Route path={`/forgotpassword`} element={<Forgotpassword />} />
         <Route path={`/Verification`} element={<Verification />} />
@@ -69,22 +48,24 @@ console.log(`hasBusiness for Router ${hasBusiness}`);
         <Route path={`/Unreguser`} element={<Unreguser />} />
         <Route path={`/profile`} element={<ProfilePage />} />
         <>
-          
-         <Route element={<RequireAuth />}>
-          <Route path={`/`} element={<Layout />}>
-            <Route path={`/brag/business/:id`} element={<UserBusinessView />} />
-            <Route path={`/brag`} element={<UserHome />} />
-            {hasBusiness ? (
-              <Route path={`/brag/business`} element={<Business />}>
-                <Route path={`/brag/business/`} element={<ServiceReview />} />
-              </Route>
-            ) : (
-              <Route path={`/brag/business`} element={<AddBusiness />} />
-            )}
+          <Route element={<RequireAuth />}>
+            <Route path={`/`} element={<Layout />}>
+              <Route
+                path={`/brag/business/:id`}
+                element={<UserBusinessView />}
+              />
+              <Route path={`/brag`} element={<UserHome />} />
+              {hasBusiness ? (
+                <Route path={`/brag/business`} element={<Business />}>
+                  <Route path={`/brag/business/`} element={<ServiceReview />} />
+                </Route>
+              ) : (
+                <Route path={`/brag/business`} element={<AddBusiness />} />
+              )}
+            </Route>
+            <Route path={`/addBusiness`} element={<AddBusiness />} />
           </Route>
-          <Route path={`/addBusiness`} element={<AddBusiness />} />
-          </Route>
-        </> 
+        </>
         <Route path="*" element={<Missing />} />
       </Routes>
     </BrowserRouter>
@@ -92,30 +73,3 @@ console.log(`hasBusiness for Router ${hasBusiness}`);
 };
 
 export default AppRouter;
-
-
-
-
-
-// {isLoggedIn ? (
-//   <>
-//     <Route
-//       path={`/brag`}
-//       element={<Layout setIsLoggedIn={setIsLoggedIn} />}
-//     >
-//       <Route path={`/brag`} element={<UserHome />} />
-//       <Route path={`/brag/business/:id`} element={<UserBusinessView />} />
-//       {hasBusiness ? (
-//         <Route path={`/brag/business`} element={<Business />}>
-//           <Route path={`/brag/business/`} element={<ServiceReview />} />
-//         </Route>
-//       ) : (
-//         <Route path={`/brag/business`} element={<AddBusiness />} />
-//       )}
-//     </Route>
-//     <Route path={`/addBusiness`} element={<AddBusiness />} />
-//   </>
-// ) : (
-//   <Route path="*" element={<Navigate to="/login" />} />
-// )}
-
