@@ -18,6 +18,8 @@ import ProfilePage from "../pages/ProfilePage";
 import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import UserBusinessView from "../pages/UserBusinessView";
+import RequireAuth from "../utility/RequireAuth";
+import Missing from "../pages/Missing";
 
 const AppRouter = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,14 +27,22 @@ const AppRouter = () => {
 
   useEffect(() => {
     // Check if user or token is saved in localStorage
-    const user = localStorage.getItem("user");
+    const user = JSON.parse(localStorage.getItem("user"))
     const token = localStorage.getItem("token");
-    if (user && token) {
-      setIsLoggedIn(true);
-      // Assuming 'hasBusiness' is a boolean stored in localStorage
-      const profile = JSON.parse(localStorage.getItem("user"));
+    const hasBusiness = user?.data.hasBusiness;
 
-      setHasBusiness(profile.data.hasBusiness);
+    if (hasBusiness) {
+      setHasBusiness(true);
+    }
+
+
+
+    if (user && token) {
+      const profile = JSON.parse(localStorage.getItem("user"));
+      setIsLoggedIn(true);
+      
+
+      
     }
   }, []);
 
@@ -45,22 +55,23 @@ console.log(`hasBusiness for Router ${hasBusiness}`);
         <Route
           index
           path={"/"}
-          element={<Home setIsLoggedIn={setIsLoggedIn} />}
+          element={<Home />}
         />
         <Route
           path={`/login`}
-          element={<Login setIsLoggedIn={setIsLoggedIn} />}
+          element={<Login />}
         />
         <Route path={`/signup`} element={<Signup />} />
         <Route path={`/forgotpassword`} element={<Forgotpassword />} />
         <Route path={`/Verification`} element={<Verification />} />
-        <Route path={`/Createpassword`} element={<Createpassword />} />
+        <Route path={`/createpassword`} element={<Createpassword />} />
         <Route path={`/Reguser`} element={<Reguser />} />
         <Route path={`/Unreguser`} element={<Unreguser />} />
         <Route path={`/profile`} element={<ProfilePage />} />
         <>
           
-          <Route path={`/brag`} element={<Layout  setIsLoggedIn={setIsLoggedIn}/>}>
+         <Route element={<RequireAuth />}>
+          <Route path={`/`} element={<Layout />}>
             <Route path={`/brag/business/:id`} element={<UserBusinessView />} />
             <Route path={`/brag`} element={<UserHome />} />
             {hasBusiness ? (
@@ -72,9 +83,9 @@ console.log(`hasBusiness for Router ${hasBusiness}`);
             )}
           </Route>
           <Route path={`/addBusiness`} element={<AddBusiness />} />
-          
+          </Route>
         </> 
-        
+        <Route path="*" element={<Missing />} />
       </Routes>
     </BrowserRouter>
   );
