@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Form from "./Form";
+import {useNavigate} from "react-router-dom"
 import SubmitBtn from "./SubmitBtn";
 import axios from "../../utility/Axios";
 import { toast } from "react-toastify";
@@ -24,6 +25,8 @@ const FormContainer = () => {
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const fileSelectedHandler = (event) => {
     const file = event.target.files[0];
@@ -52,6 +55,7 @@ const FormContainer = () => {
   };
 
   const resetForm = () => {
+    return(
     setFormData({
       businessName: "",
       businessMail: "",
@@ -66,7 +70,8 @@ const FormContainer = () => {
       twitter: "",
       facebook: "",
       image: [],
-    });
+    })
+    );
   };
 
   const [selectedFiles, setSelectedFiles] = useState([
@@ -135,6 +140,7 @@ const FormContainer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
    
 
     const formDataToSend = new FormData();
@@ -174,11 +180,12 @@ const FormContainer = () => {
         `/businesses/createBusiness`,
         formDataToSend
       );
+      toast.success("Business created successfully");
+      resetForm();
+      setIsLoading(false);
+      navigate("/brag/business");
     
-      if (response.status === 201) {
-        toast.success("Business created successfully");
-        resetForm();
-      }
+     
     } catch (error) {
       console.error(error);
       toast.error(error.response.data.message);
@@ -213,6 +220,7 @@ const FormContainer = () => {
         fileSelectedHandler={fileSelectedHandler}
         // handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
+        isLoading={isLoading}
       />
       {/* <SubmitBtn text={submitBtnText} handleSubmit={handleSubmit} /> */}
     </div>
