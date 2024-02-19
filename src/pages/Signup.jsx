@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -133,7 +132,6 @@ const Signup = () => {
                   className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 focus:outline-none"
                 >
                   <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />  
-                  {/* {showPassword ? <FiEyeOff /> : <FiEye />} */}
                 </button>
               </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -141,7 +139,7 @@ const Signup = () => {
             <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="p-3 w-full h-12 bg-blue-500 text-white mt-[5%] rounded-md"
+                className="p-3 w-full h-12 bg-[#095EDC] text-white mt-[5%] rounded-md"
               >
                 {isLoading ? "Loading..." : "Sign Up"}
               </button>
