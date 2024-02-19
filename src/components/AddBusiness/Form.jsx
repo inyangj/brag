@@ -16,6 +16,7 @@ const Form = ({
   handleStartTimeChange,
   handleEndTimeChange,
   previewUrl,
+  isLoading,
   selectedFile,
   fileSelectedHandler,
 
@@ -23,7 +24,7 @@ const Form = ({
   handleSubmit,
 
 }) => {
-  const [submitBtnText, setSubmitBtnText] = useState("Submit");
+ 
 
   const categoryOptions = [
     "Beauty products",
@@ -381,7 +382,7 @@ const Form = ({
       </div>
     ))}
       </div>
-      <SubmitBtn text={submitBtnText}  />
+      <SubmitBtn>{isLoading?"Submitting...":"Submit"}</SubmitBtn>
 
       {/* <div className="flex justify-end mr-16 my-4">
         <button
