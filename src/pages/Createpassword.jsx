@@ -1,5 +1,9 @@
 import  { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import styles from '../BackgroundImage.module.css';
 
 const Createpassword = () => {
@@ -7,24 +11,35 @@ const Createpassword = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
 
+
+  
   const url = import.meta.env.VITE_APP_BASE_URL;
+  const { token } = useParams();
+  const navigate = useNavigate();
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
     if (newPassword !== confirmPassword) {
       setError('Passwords do not match');
       return;
     }
 
-    try {
-      const response = await axios.post(`${url}/users/reset-password`, {
-        newPassword 
-      });
+    const password ={
+      password: newPassword,
+      confirmPassword: confirmPassword,
+    }
 
+    try {
+      const response = await axios.post(`${url}/users/reset-password/${token}`, password);
+      toast.success('Login successful!');
+      localStorage.setItem('userData', JSON.stringify(response.data));
+    
+    navigate('/login', { replace: true });
       console.log('Response:', response);
 
       console.log('Password reset successfully');
+
     } catch (error) {
       setError('Failed to reset password');
       console.error('Error resetting password:', error);
