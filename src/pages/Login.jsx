@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../BackgroundImage.module.css';
 
-const Login = ({setIsLoggedIn}) => {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -46,7 +46,6 @@ const Login = ({setIsLoggedIn}) => {
        hasBusiness : ${data.data.hasBusiness}`)
 
         setIsLoading(false);
-        setIsLoggedIn(true);
         navigate(from, { replace: true });
       }
     } catch (error) {
