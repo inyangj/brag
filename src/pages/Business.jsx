@@ -20,7 +20,7 @@ const Business = () => {
     try {
       const response = await axios.get(`businesses/my-business/business`);
       setBusiness(response.data.data);
-      console.log(response.data.data);
+    
       
       
     }

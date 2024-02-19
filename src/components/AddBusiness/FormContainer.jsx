@@ -135,7 +135,7 @@ const FormContainer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("formData", formData);
+   
 
     const formDataToSend = new FormData();
 
@@ -174,7 +174,7 @@ const FormContainer = () => {
         `/businesses/createBusiness`,
         formDataToSend
       );
-      console.log("response", response);
+    
       if (response.status === 201) {
         toast.success("Business created successfully");
         resetForm();

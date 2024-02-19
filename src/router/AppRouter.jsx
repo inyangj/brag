@@ -32,7 +32,7 @@ const AppRouter = () => {
     }
   }, []);
 
-  console.log(`hasBusiness for Router ${hasBusiness}`);
+
 
   return (
     <BrowserRouter>

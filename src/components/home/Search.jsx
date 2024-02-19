@@ -25,8 +25,7 @@ const Search = ({className, children}) => {
               `/businesses/businessSearch/${value}`
             );
     
-            console.log(response.data.doc);
-    
+      
             setSuggestions(response.data.doc);
           } else {
             setShowSuggestions(false);
@@ -42,8 +41,7 @@ const Search = ({className, children}) => {
       const handleSuggestionClick = (suggestion) => {
             // setTerm(suggestion);
             setShowSuggestions(false);
-            // Optionally, you can automatically submit the form here
-            console.log(suggestion);
+            
             navigate(`/brag/business/${suggestion}`);
           };
 
@@ -59,8 +57,7 @@ const Search = ({className, children}) => {
               const response = await axios.get(
                 `/businesses/businessSearch/${value}`
               );
-      
-              console.log(response.data.doc);
+    
       
               setSuggestions(response.data.doc);
             } else {
