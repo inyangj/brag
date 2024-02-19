@@ -42,8 +42,7 @@ const Login = () => {
         setAuth({ data, token });
         localStorage.setItem('token', JSON.stringify(token));
       localStorage.setItem('user', JSON.stringify(data));
-      console.log(`User Object ${data}, 
-       hasBusiness : ${data.data.hasBusiness}`)
+     
 
         setIsLoading(false);
         navigate(from, { replace: true });

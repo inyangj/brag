@@ -36,9 +36,7 @@ const Createpassword = () => {
       localStorage.setItem('userData', JSON.stringify(response.data));
     
     navigate('/login', { replace: true });
-      console.log('Response:', response);
-
-      console.log('Password reset successfully');
+  
 
     } catch (error) {
       setError('Failed to reset password');

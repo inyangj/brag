@@ -13,7 +13,7 @@ const ServiceReview = ({business}) => {
     try {
       const response = await axios.get(`/reviews/${business}`);
       setReviews(response.data.data);
-      console.log("reviews", response.data.data);
+   
     } catch (error) {
       console.error(error);
     }

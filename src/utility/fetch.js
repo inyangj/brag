@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 export async function featuredBusiness() {
     try {
       const response = await axios.get(`/businesses/getAllBusinesses`);
-      return response.data;
+      return response.data.data;
     } catch (error) {
       throw new Error("Error fetching Business");
     }

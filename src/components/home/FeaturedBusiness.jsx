@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-
-import pic1 from '../../assets/business/business.jpg'
-import pic2 from '../../assets/business/business1.jpg'
-import pic3 from '../../assets/business/profile.jpeg'
-import review from '../../assets/business/review.png'
 import logo from '../../assets/logo.png'
 import { useQuery } from "@tanstack/react-query";
 import { featuredBusiness } from '../../utility/fetch'
@@ -14,99 +9,17 @@ import Skeleton from 'react-loading-skeleton';
 
 
 const FeaturedBusiness = ({productsToShow}) => {
-
-    const location = useLocation();
     const navigate = useNavigate();
 
-    // const products = [
-    //   {
-    //     title: "ShoeCorner Nigeria",
-    //     img: [pic1],
-    //     alt: "business-image",
-    //     review: [review],
-    //     reviewtext: '3.5 (15 reviews)',
-    //     content: "Adult shoes, Kiddies shoes, and Wholesale"
-
-    //   },
-    //   {
-    //     title: "ShoeCorner Nigeria",
-    //     img: [pic2],
-    //     alt: "business-image",
-    //     review: [review],
-    //     reviewtext: '3.5 (15 reviews)',
-    //     content: "Adult shoes, Kiddies shoes, and Wholesale"
-
-    //   },
-    //   {
-    //     title: "ShoeCorner Nigeria",
-    //     img: [pic3],
-    //     review: [review],
-    //     alt: "business-image",
-    //     reviewtext: '3.5 (15 reviews)',
-    //     content: "Adult shoes, Kiddies shoes, and Wholesale"
-
-    //   },
-    //   {
-    //     title: "ShoeCorner Nigeria",
-    //     img: [pic1],
-    //     alt: "business-image",
-    //     review: [review],
-    //     reviewtext: '3.5 (15 reviews)',
-    //     content: "Adult shoes, Kiddies shoes, and Wholesale"
-
-    //   },
-    //   {
-    //     title: "ShoeCorner Nigeria",
-    //     img: [pic3],
-    //     alt: "business-image",
-    //     review: [review],
-    //     reviewtext: '3.5 (15 reviews)',
-    //     content: "Adult shoes, Kiddies shoes, and Wholesale"
-
-    //   },
-    //   {
-    //     title: "ShoeCorner Nigeria",
-    //     img: [pic2],
-    //     alt: "business-image",
-    //     review: [review],
-    //     reviewtext: '3.5 (15 reviews)',
-    //     content: "Adult shoes, Kiddies shoes, and Wholesale"
-
-    //   },
-    //   {
-    //     title: "ShoeCorner Nigeria",
-    //     img: [pic1],
-    //     review: [review],
-    //     alt: "business-image",
-    //     reviewtext: '3.5 (15 reviews)',
-    //     content: "Adult shoes, Kiddies shoes, and Wholesale"
-
-    //   },
-    //   {
-    //     title: "ShoeCorner Nigeria",
-    //     img: [pic3],
-    //     review: [review],
-    //     alt: "business-image",
-    //     reviewtext: '3.5 (15 reviews)',
-    //     content: "Adult shoes, Kiddies shoes, and Wholesale"
-
-    //   },
-    // ]
-
-    const [products, setProducts] = useState([]);
-
     const {
-      data: business = [],
+      data: products = [],
       isLoading,
       error,
     } = useQuery({ queryKey: ["Business"], queryFn: featuredBusiness });
 
-useEffect( () => {
-  setProducts(business.data)
-},[])
 
 if (isLoading) {
-  // Display skeleton loading
+
   return (
       <div className="flex gap-3">
           <Skeleton height={200} count={productsToShow} />
@@ -118,7 +31,7 @@ const handleClick = (product) => {
   
   navigate(`/brag/business/${product}`);
 };
-console.log(products, "products");
+
 
  
 
