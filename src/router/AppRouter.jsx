@@ -64,7 +64,7 @@ console.log(`hasBusiness for Router ${hasBusiness}`);
         <Route path={`/signup`} element={<Signup />} />
         <Route path={`/forgotpassword`} element={<Forgotpassword />} />
         <Route path={`/Verification`} element={<Verification />} />
-        <Route path={`/createpassword`} element={<Createpassword />} />
+        <Route path={`/createpassword/:token`} element={<Createpassword />} />
         <Route path={`/Reguser`} element={<Reguser />} />
         <Route path={`/Unreguser`} element={<Unreguser />} />
         <Route path={`/profile`} element={<ProfilePage />} />
