@@ -4,12 +4,9 @@ import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 
-const Layout = ({setIsLoggedIn}) => {
+const Layout = () => {
   const location = useLocation();
 
-  useEffect(() => {
-    setIsLoggedIn(true);
-  })
   return (
     <div className="relative font-montserrat">
       <header>

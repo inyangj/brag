@@ -1,18 +1,23 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../BackgroundImage.module.css';
 
-const Login = ({setIsLoggedIn}) => {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const { setAuth } = useAuth();
+
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -34,14 +39,13 @@ const Login = ({setIsLoggedIn}) => {
         toast.success('Login successful!');
         localStorage.setItem('userData', JSON.stringify(response.data));
         const { token, ...data } = response.data;
+        setAuth({ data, token });
         localStorage.setItem('token', JSON.stringify(token));
       localStorage.setItem('user', JSON.stringify(data));
-      console.log(`User Object ${data}, 
-       hasBusiness : ${data.data.hasBusiness}`)
+     
 
         setIsLoading(false);
-        setIsLoggedIn(true);
-        navigate('/brag');
+        navigate(from, { replace: true });
       }
     } catch (error) {
       toast.error('Incorrect username or password.');

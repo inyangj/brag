@@ -9,11 +9,11 @@ import tick from "../assets/business/tick.svg";
 import AboutUs from "../components/home/AboutUs";
 import GetStartedModal from "../components/GetStartedModal";
 
-const Home = ({setIsLoggedIn}) => {
+const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    
     localStorage.clear();
 
   
