@@ -21,12 +21,12 @@ const GetStartedModal = ({isOpen, onClose}) => {
         >
           Login
         </Link>
-        <button
+        <Link to={`/signup`}
           className="bg-blue-500 text-white px-7 py-2 rounded-[10px]"
         //   onClick={() => onClose(false)}
         >
           Sign Up
-        </button>
+        </Link>
       </div>
     </div>
   </div>

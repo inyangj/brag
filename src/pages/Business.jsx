@@ -20,7 +20,7 @@ const Business = () => {
     try {
       const response = await axios.get(`businesses/my-business/business`);
       setBusiness(response.data.data);
-      console.log(response.data.data);
+    
       
       
     }
@@ -105,10 +105,10 @@ const Business = () => {
             </p>
             <div className="flex items-center gap-2 ">
               <p className="text-[#095EDC] md:text-xl">
-                http://localhost:5173/brag/business/{id}
+              https://brag-chi.vercel.app/brag/business/{id}
               </p>
               <CopyToClipboard
-                text={`http://localhost:5173/brag/business/${id}`}
+                text={`https://brag-chi.vercel.app/brag/business/${id}`}
                 onCopy={handleCopy}
               >
                 <FontAwesomeIcon icon={copied ? faCheck : faCopy} />

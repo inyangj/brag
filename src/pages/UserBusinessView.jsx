@@ -24,7 +24,7 @@ const UserBusinessView = () => {
   // const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
   const queryClient = useQueryClient();
-  console.log(id);
+
 
   const getBusiness = async () => {
     try {
@@ -32,7 +32,7 @@ const UserBusinessView = () => {
       setBusinessData(response.data.data);
       setServices(response.data.data.services);
       setImage(response.data.data.image);
-      console.log(response.data.data);
+  
     } catch (error) {
       console.error(error);
       throw new Error("Error fetching Business");
@@ -47,7 +47,7 @@ const UserBusinessView = () => {
     queryKey: ["getBusiness"],
     queryFn: getBusiness,
   });
-  console.log(businessData);
+
   const handleServiceClick = (service) => {
     setSelectedService(service);
   };
