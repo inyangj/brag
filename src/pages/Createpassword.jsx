@@ -31,7 +31,7 @@ const Createpassword = () => {
     }
 
     try {
-      const response = await axios.post(`${url}/users/reset-password/${token}`, password);
+      const response = await axios.patch(`${url}/users/reset-password/${token}`, password);
       toast.success('Login successful!');
       localStorage.setItem('userData', JSON.stringify(response.data));
     
