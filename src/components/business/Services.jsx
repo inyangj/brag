@@ -17,7 +17,7 @@ const Services = ({className, styleName, services, onClick}) => {
 
   return (
     <div className={`${styleName} `}>
-        {services?.map((service, index)=>(
+        {services.map((service, index)=>(
             
                 <p key={index} className={`border   ${className}  `} onClick={() => onClick(service)}>{service}</p>
            
