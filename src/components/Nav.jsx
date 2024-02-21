@@ -29,9 +29,9 @@ const Nav = ({className}) => {
         <Li to="/brag" style={getLinkStyle("/brag")}>
           Home
         </Li>
-        <Li to="" style={getLinkStyle("/review")}>
+        {/* <Li to="" style={getLinkStyle("/review")}>
         Review
-        </Li>
+        </Li> */}
         <Li to="/brag/business" style={getLinkStyle("/brag/business")}>
         {hasBusiness ?  "My Business" : "Add Business"}
         </Li>
