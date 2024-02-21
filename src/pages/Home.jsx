@@ -12,12 +12,7 @@ import GetStartedModal from "../components/GetStartedModal";
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleLogout = () => {
-    
-    localStorage.clear();
-
-  
-  };
+ 
 
   return (
     <div className="relative ">
@@ -38,7 +33,7 @@ const Home = () => {
               Get Started
             </button>
 
-            <button onClick={handleLogout}>logout</button>
+            
             <GetStartedModal isOpen={isModalOpen} onClose={setIsModalOpen} />
           </div>
         </section>
@@ -47,7 +42,7 @@ const Home = () => {
         <section className="">
           <Search />
           <div className="px-6 py-6 lg:px-12 lg:py-[1.88rem] xl:px-28">
-          <FeaturedBusiness productsToShow={4} />
+          <FeaturedBusiness productsToShow={6} />
 
           </div>
           <AboutUs />

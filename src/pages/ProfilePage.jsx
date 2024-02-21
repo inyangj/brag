@@ -1,42 +1,60 @@
-import React from "react";
-import Nav from "../components/AddBusiness/Nav";
+import React, { useEffect, useState } from "react";
+import Nav from "../components/Nav";
 import ProfileHero from "../components/Profile/ProfileHero";
 import PersonalInfo from "../components/Profile/PersonalInfo";
-import Form from "../components/AddBusiness/Form";
-import Category from "../components/AddBusiness/Category";
-import BusinessTime from "../components/AddBusiness/BusinessTime";
-import SocialMedia from "../components/AddBusiness/SocialMedia";
-import ImageBox from "../components/AddBusiness/ImageBox";
-import FormContainer from "../components/AddBusiness/FormContainer";
-import LogoInput from "../components/AddBusiness/LogoInput";
-import ProfileLogoBox from "../components/Profile/ProfileLogoBox";
 import Buttons from "../components/Profile/Buttons";
 import ProfileForm from "../components/Profile/ProfileForm";
+import axios from '../utility/Axios'
+import LogoutModal from "../components/LogoutModal";
 
 function ProfilePage() {
+  const [business, setBusiness] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const users = JSON.parse(localStorage.getItem("user"));
+  
+  const getMyBusiness = async () => {
+    try {
+      const response = await axios.get(`businesses/my-business/business`);
+      setBusiness(response.data.data);
+    
+      
+      
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    getMyBusiness();
+  }, []);
+
+  if (!business || business.length === 0) {
+    return null; // or loading indicator
+  }
+
+  const lastBusiness = business[business.length - 1];
+;
+  const {
+    id,
+    phoneNumber,
+  } = lastBusiness;
   return (
     <div>
       <Nav />
       <ProfileHero />
-      <PersonalInfo />
-      <FormContainer />
+      <PersonalInfo profile={users?.data} phone={phoneNumber}/>
+      <ProfileForm business={lastBusiness} />
+
+      {/* <FormContainer /> */}
 
 
-      <Buttons />
-
-      {/* <div>
-        <h2 className="mx-6 md:mx-16 mt-6 font-bold">Business Info</h2>
-        <ProfileLogoBox />
-        <FormContainer />
+      <div className=" bottom-0 left-0 w-full flex justify-end p-4">
+        <button onClick={() => setIsModalOpen(true)} className="border border-red-500 text-red-500 px-4 py-2 rounded">
+          Logout
+        </button>
       </div>
-      <Category />
-      <BusinessTime />
-      <SocialMedia />
-      <div className="grid grid-cols-2 mx-6 md:grid md:grid-cols-5 lg:grid-cols-3 md:gap-4 md:mx-16 xl:grid-cols-5 ">
-        {[...Array(5)].map((_, index) => (
-          <ImageBox key={index} />
-        ))}
-      </div> */}
+      <LogoutModal isOpen={isModalOpen} onClose={setIsModalOpen} />
     </div>
   );
 }

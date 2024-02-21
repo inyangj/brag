@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Images from "../components/business/Images";
-import { Outlet } from "react-router-dom";
 import axios from "../utility/Axios";
 import {BusinessNameProvider} from '../utility/BusinessContext'
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import ServiceReview from "./ServiceReviews";
+import Background from "../components/Background";
 
 const Business = () => {
   const [copied, setCopied] = useState(false);
@@ -68,9 +68,12 @@ const Business = () => {
   return (
     <BusinessNameProvider initialBusinessName={businessName}>
     <div>
-      <section className="flex mt-10 bg-[#095EDC2B] justify-center items-center h-[10rem] md:h-[22rem]">
+      <Background>
+      <h2 className="text-3xl md:text-6xl font-bold mt-10 md:text-white">Business Content</h2>
+      </Background>
+      {/* <section className="flex mt-10 bg-[#095EDC2B] justify-center items-center h-[10rem] md:h-[22rem]">
         <h2 className="text-3xl md:text-6xl font-bold">Business Content</h2>
-      </section>
+      </section> */}
 
       <div className="px-6  py-6 lg:px-12 lg:py-[1.88rem] ">
         {/* <div>
