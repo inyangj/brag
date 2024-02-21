@@ -76,7 +76,7 @@ const Search = ({className, children}) => {
     <section className='grid justify-center '>
         <form action="" onSubmit={handleSubmit} className='flex items-center  py-4 justify-center :w-[500px] xl:w-[800px]'>
         <div className="relative w-full lg:w-1/2">
-        <div className="w-full  flex items-center gap-x-4 bg-white/10 rounded-lg px-3 lg:px-5 py-3 lg:py-4">
+        <div className="w-full  flex items-center gap-x-4 bg-white/10 rounded-lg px-3 lg:px-5 py-3 lg:py-4 shadow-md">
         <FontAwesomeIcon title='search' className='text-[#A9A9A9] ' icon={faMagnifyingGlass} />
 
           <input
@@ -113,10 +113,10 @@ const Search = ({className, children}) => {
           </ul>
         )}
       </div>
-            <div className='border bin rounded-r-[10px] border-[#A9A9A9] p-3'>
+            {/* <div className='border bin rounded-r-[10px] border-[#A9A9A9] p-3'>
             <FontAwesomeIcon title='search' className='text-[#A9A9A9] ' icon={faFilter} />
 
-            </div>
+            </div> */}
 
         </form>
 

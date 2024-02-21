@@ -35,7 +35,7 @@ const Nav = ({className}) => {
         <Li to="/brag/business" style={getLinkStyle("/brag/business")}>
         {hasBusiness ?  "My Business" : "Add Business"}
         </Li>
-        <Li to="" style={getLinkStyle("/profile")}>
+        <Li to="/profile" style={getLinkStyle("/profile")}>
         Profile
         </Li>
       </ul>
