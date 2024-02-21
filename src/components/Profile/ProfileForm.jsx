@@ -53,7 +53,7 @@ const ProfileForm = ({business}) => {
         <h2 className="text-[16px] font-semibold">Services</h2>
         <Services
           styleName={`grid gap-5 md:gap-10`}
-          className={`border-[#A9A9A9] text-2xl rounded-[10px] py-4 pl-8 `}
+          className={`border-[#A9A9A9]  rounded-[10px] py-4 pl-8 `}
           services={services}
         />
       </section>
