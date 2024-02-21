@@ -6,11 +6,12 @@ import Buttons from "../components/Profile/Buttons";
 import ProfileForm from "../components/Profile/ProfileForm";
 import axios from '../utility/Axios'
 import LogoutModal from "../components/LogoutModal";
+import ProfileSkeleton from "../utility/Loader";
 
 function ProfilePage() {
   const [business, setBusiness] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
   const users = JSON.parse(localStorage.getItem("user"));
   
   const getMyBusiness = async () => {
@@ -23,30 +24,36 @@ function ProfilePage() {
     }
     catch (error) {
       console.error(error);
+    }finally {
+      setIsLoading(false);
     }
   }
   useEffect(() => {
     getMyBusiness();
   }, []);
 
-  if (!business || business.length === 0) {
-    return null; // or loading indicator
-  }
+  // if (!business || business.length === 0) {
+  //   return <ProfileSkeleton />;
+  // }
 
   const lastBusiness = business[business.length - 1];
 ;
-  const {
-    id,
-    phoneNumber,
-  } = lastBusiness;
+  // const {
+  //   id,
+  //   phoneNumber,
+  // } = lastBusiness;
   return (
     <div>
       <Nav />
       <ProfileHero />
-      <PersonalInfo profile={users?.data} phone={phoneNumber}/>
-      <ProfileForm business={lastBusiness} />
-
-      {/* <FormContainer /> */}
+      <PersonalInfo profile={users?.data} phone={lastBusiness?.phoneNumber}/>
+      {isLoading ? (
+        <ProfileSkeleton />
+      ) : lastBusiness ? (
+        <ProfileForm business={lastBusiness} />
+      ) : (
+        <div className="text-center text-gray-600">No business created yet</div>
+      )}
 
 
       <div className=" bottom-0 left-0 w-full flex justify-end p-4">
