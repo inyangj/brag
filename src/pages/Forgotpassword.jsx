@@ -61,14 +61,13 @@ const Forgotpassword = () => {
             <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="p-3 w-full h-12 bg-blue-[#095EDC] text-white mt-[4%] rounded-md"
+                className="p-3 w-full h-12 bg-[#095EDC] text-white mt-[4%] rounded-md"
               >
                 {isLoading ? "Loading..." : "Submit"}
               </button>
             </div>
           </form>
         </div>
-        {/* Modal */}
         {showModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
             <div className="bg-white p-8 rounded-md shadow-md text-center">
@@ -77,7 +76,7 @@ const Forgotpassword = () => {
               </p>
               <button
                 onClick={closeModal}
-                className="mt-4 bg-blue-[#095EDC] text-white px-4 py-2 rounded-md"
+                className="mt-4 bg-[#095EDC] text-white px-4 py-2 rounded-md"
               >
                 Close
               </button>
