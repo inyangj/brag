@@ -91,11 +91,11 @@ const Business = () => {
           </div>
         </section>
 
-        <section className="grid gap-5 md:gap-10">
-          <h2 className="text-2xl font-medium">Services</h2>
+        <section className="grid gap-5 w-full ">
+          <h2 className="text-2xl font-medium mt-8">Services</h2>
           <Services
             styleName={`grid gap-5 md:gap-10`}
-            className={`border-[#A9A9A9] text-2xl rounded-[10px] py-4 pl-8 `}
+            className={`border-[#A9A9A9] text-2xl rounded-[10px] py-4 pl-8`}
             services={services}
           />
           <div className=" ">
@@ -103,11 +103,12 @@ const Business = () => {
               + Add more services
             </button> */}
 
-            <p className=" text-lg md:text-2xl mt-9 mb-2">
+            <p className=" text-lg md:text-2xl mt-9 mb-2 overflow-hidden">
               Share this links to get reviews from customers
             </p>
-            <div className="flex items-center gap-2 ">
-              <p className="text-[#095EDC] md:text-xl">
+            <div className="flex items-center gap-2 w-[200px] sm:w-full
+            ">
+              <p className="text-[#095EDC] md:text-xl overflow-hidden">
               https://brag-chi.vercel.app/brag/business/{id}
               </p>
               <CopyToClipboard
