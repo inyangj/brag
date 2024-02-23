@@ -7,6 +7,7 @@ import ProfileForm from "../components/Profile/ProfileForm";
 import axios from '../utility/Axios'
 import LogoutModal from "../components/LogoutModal";
 import ProfileSkeleton from "../utility/Loader";
+import ProfileSkeleton1 from "../utility/LoaderLg";
 
 function ProfilePage() {
   const [business, setBusiness] = useState([]);
@@ -48,7 +49,22 @@ function ProfilePage() {
       <ProfileHero />
       <PersonalInfo profile={users?.data} phone={lastBusiness?.phoneNumber}/>
       {isLoading ? (
-        <ProfileSkeleton />
+        <div className="mx-6 md:mx-16">
+          <div className="md:hidden grid gap-3">
+          <ProfileSkeleton />
+          <ProfileSkeleton />
+          <ProfileSkeleton />
+          <ProfileSkeleton />
+          <ProfileSkeleton />
+          </div>
+          <div className="md:grid hidden  gap-3">
+            <ProfileSkeleton1 />
+            <ProfileSkeleton1 />
+            <ProfileSkeleton1 />
+            <ProfileSkeleton1 />
+          </div>
+
+        </div>
       ) : lastBusiness ? (
         <ProfileForm business={lastBusiness} />
       ) : (
