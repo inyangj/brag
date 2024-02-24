@@ -22,16 +22,14 @@ import RequireAuth from "../utility/RequireAuth";
 import Missing from "../pages/Missing";
 
 const AppRouter = () => {
-  const [hasBusiness, setHasBusiness] = useState(false);
+  // const [hasBusiness, setHasBusiness] = useState(false);
+  
+  const profile = JSON.parse(sessionStorage.getItem("user"));
+  // useEffect(() => {
+  //   setHasBusiness(profile?.data.hasBusiness);
+  // }, []);
 
-  useEffect(() => {
-    const profile = JSON.parse(localStorage.getItem("user"));
-    setHasBusiness(profile?.data.hasBusiness);
-    
-  }, []);
-
-
-
+  // console.log(hasBusiness);
 
   return (
     <BrowserRouter>
@@ -54,7 +52,7 @@ const AppRouter = () => {
                 element={<UserBusinessView />}
               />
               <Route path={`/brag`} element={<UserHome />} />
-              {hasBusiness ? (
+              {profile?.data.hasBusiness ? (
                 <Route path={`/brag/business`} element={<Business />}>
                   <Route path={`/brag/business/`} element={<ServiceReview />} />
                 </Route>

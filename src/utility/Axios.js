@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const request = () => {
-  const token = JSON.parse(localStorage.getItem('token'));
+  const token = JSON.parse(sessionStorage.getItem("token"));
   const headers = token === null ? {} : { Authorization: `Bearer ${token}` };
 
   const baseURL = import.meta.env.VITE_APP_BASE_URL;
