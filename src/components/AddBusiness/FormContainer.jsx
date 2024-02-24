@@ -5,6 +5,7 @@ import SubmitBtn from "./SubmitBtn";
 import axios from "../../utility/Axios";
 import { toast } from "react-toastify";
 import LogoInput from "./LogoInput";
+import useAuth from "../../hooks/useAuth";
 
 const FormContainer = () => {
   const [formData, setFormData] = useState({
@@ -27,6 +28,7 @@ const FormContainer = () => {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { updateHasBusinessUpdated } = useAuth();
 
   const fileSelectedHandler = (event) => {
     const file = event.target.files[0];
@@ -174,6 +176,9 @@ const FormContainer = () => {
         formDataToSend
       );
       toast.success("Business created successfully");
+      if (response.status === 'success') {
+        updateHasBusinessUpdated(true); 
+    }
       resetForm();
       setIsLoading(false);
       navigate("/brag/business");
