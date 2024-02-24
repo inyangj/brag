@@ -4,12 +4,14 @@ import Li from "./elements/Li";
 
 const Nav = ({ className }) => {
   const location = useLocation();
-  const [hasBusiness, setHasBusiness] = useState(false);
+  // const [hasBusiness, setHasBusiness] = useState(false);
 
-  useEffect(() => {
-    const profile = JSON.parse(sessionStorage.getItem("user"));
-    setHasBusiness(profile?.data.hasBusiness);
-  }, []);
+  const profile = JSON.parse(sessionStorage.getItem("user"));
+  // // const hasBusiness = profile?.data.hasBusiness
+  // // useEffect(() => {
+  // //   // setHasBusiness(profile?.data.hasBusiness);
+  // // }, []);
+ 
 
   
 
@@ -32,7 +34,7 @@ const Nav = ({ className }) => {
         Review
         </Li> */}
         <Li to="/brag/business" style={getLinkStyle("/brag/business")}>
-          {hasBusiness ? "My Business" : "Add Business"}
+          {profile?.data.hasBusiness ? "My Business" : "Add Business"}
         </Li>
         <Li to="/profile" style={getLinkStyle("/profile")}>
           Profile
