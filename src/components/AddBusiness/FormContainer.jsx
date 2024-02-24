@@ -28,7 +28,7 @@ const FormContainer = () => {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { hasBusinessUpdated, updateHasBusinessUpdated } = useAuth();
+  const { updateHasBusinessUpdated } = useAuth();
 
   const fileSelectedHandler = (event) => {
     const file = event.target.files[0];
@@ -177,7 +177,6 @@ const FormContainer = () => {
       );
       toast.success("Business created successfully");
       updateHasBusinessUpdated(true); 
-        console.log(hasBusinessUpdated);
       resetForm();
       setIsLoading(false);
       navigate("/brag/business");
