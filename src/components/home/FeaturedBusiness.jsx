@@ -18,6 +18,7 @@ const FeaturedBusiness = ({productsToShow}) => {
     } = useQuery({ queryKey: ["Business"], queryFn: featuredBusiness });
 
 
+
 if (isLoading) {
 
   return (
@@ -48,7 +49,7 @@ const handleClick = (product) => {
             <div className='flex items-center gap-2'>
               <RatingOnly rating={product.averageRating} />
               {/* <img src={product.ratings} className='w-1/2 md:w-2/3 ' alt="review" /> */}
-              <p className='md:text-lg'>{`${product.averageRating} (${product.reviewCount} reviews)`}</p>
+              <p className='md:text-lg'>{`${Number.isInteger(product?.averageRating) ? product?.averageRating.toString() : product?.averageRating.toFixed(1)} (${product.reviewCount} reviews)`}</p>
             </div>
             {product.services.map((service, index) => ( 
               <div key={index} className='flex gap-2'>

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Li from "./elements/Li";
+import useAuth from "../hooks/useAuth";
 
 const Nav = ({ className }) => {
   const location = useLocation();
   // const [hasBusiness, setHasBusiness] = useState(false);
 
-  const profile = JSON.parse(sessionStorage.getItem("user"));
+  const hasBusiness = JSON.parse(sessionStorage.getItem("hasBusiness"));
+  const { hasBusinessUpdated } = useAuth();
   // // const hasBusiness = profile?.data.hasBusiness
   // // useEffect(() => {
   // //   // setHasBusiness(profile?.data.hasBusiness);
@@ -34,7 +36,7 @@ const Nav = ({ className }) => {
         Review
         </Li> */}
         <Li to="/brag/business" style={getLinkStyle("/brag/business")}>
-          {profile?.data.hasBusiness ? "My Business" : "Add Business"}
+          {hasBusiness || hasBusinessUpdated ? "My Business" : "Add Business"}
         </Li>
         <Li to="/profile" style={getLinkStyle("/profile")}>
           Profile
