@@ -7,12 +7,12 @@ const Nav = ({className}) => {
   const [hasBusiness, setHasBusiness] = useState(false);
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      const profile = JSON.parse(localStorage.getItem("user"));
-      setHasBusiness(profile.data.hasBusiness);
-    }
+    const profile = JSON.parse(localStorage.getItem("user"));
+    setHasBusiness(profile.data.hasBusiness);
+    
   }, []);
+
+
 
 
   const getLinkStyle = (path) => ({
