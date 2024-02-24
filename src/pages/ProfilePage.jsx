@@ -4,7 +4,7 @@ import ProfileHero from "../components/Profile/ProfileHero";
 import PersonalInfo from "../components/Profile/PersonalInfo";
 import Buttons from "../components/Profile/Buttons";
 import ProfileForm from "../components/Profile/ProfileForm";
-import axios from '../utility/Axios'
+import axios from "../utility/Axios";
 import LogoutModal from "../components/LogoutModal";
 import ProfileSkeleton from "../utility/Loader";
 import ProfileSkeleton1 from "../utility/LoaderLg";
@@ -13,22 +13,18 @@ function ProfilePage() {
   const [business, setBusiness] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const users = JSON.parse(localStorage.getItem("user"));
-  
+  const users = JSON.parse(sessionStorage.getItem("user"));
+
   const getMyBusiness = async () => {
     try {
       const response = await axios.get(`businesses/my-business/business`);
       setBusiness(response.data.data);
-    
-      
-      
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
-    }finally {
+    } finally {
       setIsLoading(false);
     }
-  }
+  };
   useEffect(() => {
     getMyBusiness();
   }, []);
@@ -38,7 +34,6 @@ function ProfilePage() {
   // }
 
   const lastBusiness = business[business.length - 1];
-;
   // const {
   //   id,
   //   phoneNumber,
@@ -47,15 +42,15 @@ function ProfilePage() {
     <div>
       <Nav />
       <ProfileHero />
-      <PersonalInfo profile={users?.data} phone={lastBusiness?.phoneNumber}/>
+      <PersonalInfo profile={users?.data} phone={lastBusiness?.phoneNumber} />
       {isLoading ? (
         <div className="mx-6 md:mx-16">
           <div className="md:hidden grid gap-3">
-          <ProfileSkeleton />
-          <ProfileSkeleton />
-          <ProfileSkeleton />
-          <ProfileSkeleton />
-          <ProfileSkeleton />
+            <ProfileSkeleton />
+            <ProfileSkeleton />
+            <ProfileSkeleton />
+            <ProfileSkeleton />
+            <ProfileSkeleton />
           </div>
           <div className="md:grid hidden  gap-3">
             <ProfileSkeleton1 />
@@ -63,7 +58,6 @@ function ProfilePage() {
             <ProfileSkeleton1 />
             <ProfileSkeleton1 />
           </div>
-
         </div>
       ) : lastBusiness ? (
         <ProfileForm business={lastBusiness} />
@@ -71,9 +65,11 @@ function ProfilePage() {
         <div className="text-center text-gray-600">No business created yet</div>
       )}
 
-
       <div className=" bottom-0 left-0 w-full flex justify-end p-4">
-        <button onClick={() => setIsModalOpen(true)} className="border border-red-500 text-red-500 px-4 py-2 rounded">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="border border-red-500 text-red-500 px-4 py-2 rounded"
+        >
           Logout
         </button>
       </div>

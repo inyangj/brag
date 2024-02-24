@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Form from "./Form";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import SubmitBtn from "./SubmitBtn";
 import axios from "../../utility/Axios";
 import { toast } from "react-toastify";
@@ -43,7 +43,7 @@ const FormContainer = () => {
   };
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(sessionStorage.getItem("user"));
     const id = user?.data.id;
     setFormData({ ...formData, user: id });
   }, []);
@@ -55,8 +55,7 @@ const FormContainer = () => {
   };
 
   const resetForm = () => {
-    return(
-    setFormData({
+    return setFormData({
       businessName: "",
       businessMail: "",
       businessCategory: "",
@@ -70,8 +69,7 @@ const FormContainer = () => {
       twitter: "",
       facebook: "",
       image: [],
-    })
-    );
+    });
   };
 
   const [selectedFiles, setSelectedFiles] = useState([
@@ -94,7 +92,6 @@ const FormContainer = () => {
       image: newFormDataImages,
     }));
   };
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -137,31 +134,27 @@ const FormContainer = () => {
     setFormData({ ...formData, hoursOfOperation: updatedHoursOfOperation });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-   
 
     const formDataToSend = new FormData();
-
 
     formData.daysOfOperation.forEach((day, index) => {
       formDataToSend.append(`daysOfOperation[]`, day);
     });
-    
+
     formData.hoursOfOperation.forEach((hour, index) => {
       formDataToSend.append(`hoursOfOperation[]`, hour);
     });
-    
+
     formData.services.forEach((service, index) => {
       formDataToSend.append(`services`, service);
     });
-    
+
     formData.image.forEach((image, index) => {
       formDataToSend.append(`image`, image);
     });
-    
 
     formDataToSend.append("logo", formData.logo);
     formDataToSend.append("user", formData.user);
@@ -184,8 +177,6 @@ const FormContainer = () => {
       resetForm();
       setIsLoading(false);
       navigate("/brag/business");
-    
-     
     } catch (error) {
       console.error(error);
       toast.error(error.response.data.message);

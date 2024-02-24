@@ -58,7 +58,7 @@ const Signup = () => {
 
       if (response.status === 201) {
         toast.success("Registration successful!");
-        localStorage.setItem("userData", response.data);
+        sessionStorage.setItem("userData", response.data);
         setIsLoading(false);
         setShowModal(true);
       } else {
@@ -118,7 +118,7 @@ const Signup = () => {
             <div className="mb-2 relative">
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"} 
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   name="password"
                   value={formData.password}
@@ -131,7 +131,7 @@ const Signup = () => {
                   onClick={togglePasswordVisibility}
                   className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 focus:outline-none"
                 >
-                  <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />  
+                  <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
                 </button>
               </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}

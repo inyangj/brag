@@ -1,19 +1,18 @@
-import { useState } from 'react';
-import useAuth from '../hooks/useAuth';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import styles from '../BackgroundImage.module.css';
+import { useState } from "react";
+import useAuth from "../hooks/useAuth";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "../BackgroundImage.module.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const { setAuth } = useAuth();
-
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,7 +21,7 @@ const Login = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -36,33 +35,38 @@ const Login = () => {
       const response = await axios.post(`${url}/users/login`, formData);
 
       if (response.status === 200) {
-        toast.success('Login successful!');
-        localStorage.setItem('userData', JSON.stringify(response.data));
+        toast.success("Login successful!");
+        sessionStorage.setItem("userData", JSON.stringify(response.data));
         const { token, ...data } = response.data;
         setAuth({ data, token });
-        localStorage.setItem('token', JSON.stringify(token));
-      localStorage.setItem('user', JSON.stringify(data));
-     
+        sessionStorage.setItem("token", JSON.stringify(token));
+        sessionStorage.setItem("user", JSON.stringify(data));
 
         setIsLoading(false);
         if (from === "/") {
-          navigate('/brag', { replace: true });
+          navigate("/brag", { replace: true });
         } else {
           navigate(from, { replace: true });
         }
       }
     } catch (error) {
-      toast.error('Incorrect username or password.');
+      toast.error("Incorrect username or password.");
       setIsLoading(false);
     }
   };
 
   return (
-    <div className={`absolute inset-0 bg-cover bg-center ${styles.backgroundImage}`}>
+    <div
+      className={`absolute inset-0 bg-cover bg-center ${styles.backgroundImage}`}
+    >
       <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center">
         <div className="w-[400px] h-[500px] p-6 bg-gray-300 rounded-tl-[20px] rounded-br-[20px] shadow-md relative">
-          <h1 className="text-3xl text-[#095EDC] font-bold mb-4 text-center">BRAG</h1>
-          <p className="font-montserrat text-2xl font-bold leading-10 tracking-wider text-center">Welcome back!</p>
+          <h1 className="text-3xl text-[#095EDC] font-bold mb-4 text-center">
+            BRAG
+          </h1>
+          <p className="font-montserrat text-2xl font-bold leading-10 tracking-wider text-center">
+            Welcome back!
+          </p>
           <p className="font-montserrat text-base font-medium leading-5 tracking-normal text-center text-black">
             Login to see reviews
           </p>
@@ -88,7 +92,10 @@ const Login = () => {
                 placeholder="Password"
                 className="p-3 w-full rounded-tl-[5px] rounded-br-[5px]"
               />
-              <Link to="/forgotpassword" className="top-20px right-3 text-black text-end">
+              <Link
+                to="/forgotpassword"
+                className="top-20px right-3 text-black text-end"
+              >
                 Forgot Password?
               </Link>
             </div>
@@ -98,12 +105,15 @@ const Login = () => {
                 className="p-3 w-full h-12 bg-[#095EDC] text-white mt-[12%] rounded-md"
                 disabled={isLoading}
               >
-                {isLoading ? 'Loading...' : 'Login'}
+                {isLoading ? "Loading..." : "Login"}
               </button>
             </div>
             <div className="font-montserrat text-base font-normal leading-5 tracking-normal text-center mt-5">
-              Don&apos;t have an account?{' '}
-              <Link to="/signup" className="text-[#095EDC] cursor-pointer hover:underline">
+              Don&apos;t have an account?{" "}
+              <Link
+                to="/signup"
+                className="text-[#095EDC] cursor-pointer hover:underline"
+              >
                 Sign Up
               </Link>
             </div>

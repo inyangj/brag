@@ -25,13 +25,11 @@ const AppRouter = () => {
   const [hasBusiness, setHasBusiness] = useState(false);
 
   useEffect(() => {
-    const profile = JSON.parse(localStorage.getItem("user"));
+    const profile = JSON.parse(sessionStorage.getItem("user"));
     setHasBusiness(profile?.data.hasBusiness);
-    
   }, []);
 
-
-
+  console.log(hasBusiness);
 
   return (
     <BrowserRouter>
