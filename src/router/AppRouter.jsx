@@ -20,16 +20,18 @@ import Nav from "../components/Nav";
 import UserBusinessView from "../pages/UserBusinessView";
 import RequireAuth from "../utility/RequireAuth";
 import Missing from "../pages/Missing";
+import useAuth from "../hooks/useAuth";
 
 const AppRouter = () => {
   // const [hasBusiness, setHasBusiness] = useState(false);
   
-  const profile = JSON.parse(sessionStorage.getItem("user"));
+  const hasBusiness = JSON.parse(sessionStorage.getItem("hasBusiness"));
+  const { hasBusinessUpdated } = useAuth();
   // useEffect(() => {
   //   setHasBusiness(profile?.data.hasBusiness);
   // }, []);
 
-  // console.log(hasBusiness);
+  console.log(hasBusiness);
 
   return (
     <BrowserRouter>
@@ -52,7 +54,7 @@ const AppRouter = () => {
                 element={<UserBusinessView />}
               />
               <Route path={`/brag`} element={<UserHome />} />
-              {profile?.data.hasBusiness ? (
+              {hasBusiness || hasBusinessUpdated ? (
                 <Route path={`/brag/business`} element={<Business />}>
                   <Route path={`/brag/business/`} element={<ServiceReview />} />
                 </Route>

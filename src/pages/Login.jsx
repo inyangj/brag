@@ -12,7 +12,7 @@ const Login = () => {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const { setAuth } = useAuth();
+  const { setAuth, updateHasBusinessUpdated } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,8 +41,10 @@ const Login = () => {
         setAuth({ data, token });
         sessionStorage.setItem("token", JSON.stringify(token));
         sessionStorage.setItem("user", JSON.stringify(data));
+        sessionStorage.setItem("hasBusiness", JSON.stringify(data.data.hasBusiness));
 
         setIsLoading(false);
+        updateHasBusinessUpdated(data.data.hasBusiness); 
         if (from === "/") {
           navigate("/brag", { replace: true });
         } else {
