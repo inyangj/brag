@@ -26,7 +26,7 @@ const AppRouter = () => {
 
   useEffect(() => {
     const profile = JSON.parse(localStorage.getItem("user"));
-    setHasBusiness(profile.data.hasBusiness);
+    setHasBusiness(profile?.data.hasBusiness);
     
   }, []);
 
