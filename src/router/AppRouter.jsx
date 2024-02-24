@@ -25,12 +25,11 @@ const AppRouter = () => {
   const [hasBusiness, setHasBusiness] = useState(false);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const hasBusiness = user?.data.hasBusiness;
-    if (hasBusiness) {
-      setHasBusiness(true);
-    }
+    const profile = JSON.parse(localStorage.getItem("user"));
+    setHasBusiness(profile.data.hasBusiness);
+    
   }, []);
+
 
 
 
@@ -63,7 +62,7 @@ const AppRouter = () => {
                 <Route path={`/brag/business`} element={<AddBusiness />} />
               )}
             </Route>
-            <Route path={`/addBusiness`} element={<AddBusiness />} />
+            {/* <Route path={`/addBusiness`} element={<AddBusiness />} /> */}
           </Route>
         </>
         <Route path="*" element={<Missing />} />

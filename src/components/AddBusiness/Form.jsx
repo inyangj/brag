@@ -382,7 +382,7 @@ const Form = ({
       </div>
     ))}
       </div>
-      <SubmitBtn>{isLoading?"Submitting...":"Submit"}</SubmitBtn>
+      <SubmitBtn disabled={isLoading}>{isLoading?"Submitting...":"Submit"}</SubmitBtn>
 
       {/* <div className="flex justify-end mr-16 my-4">
         <button
