@@ -23,15 +23,9 @@ import Missing from "../pages/Missing";
 import useAuth from "../hooks/useAuth";
 
 const AppRouter = () => {
-  // const [hasBusiness, setHasBusiness] = useState(false);
   
   const hasBusiness = JSON.parse(sessionStorage.getItem("hasBusiness"));
-  const { hasBusinessUpdated, updateHasBusinessUpdated  } = useAuth();
-  // // const hasBusiness = profile?.data.hasBusiness
-  useEffect(() => {
-    updateHasBusinessUpdated(true);
-  }, [hasBusinessUpdated]);
- 
+  const { hasBusinessUpdated  } = useAuth();
 
   return (
     <BrowserRouter>
