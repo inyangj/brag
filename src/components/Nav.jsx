@@ -8,11 +8,11 @@ const Nav = ({ className }) => {
   // const [hasBusiness, setHasBusiness] = useState(false);
 
   const hasBusiness = JSON.parse(sessionStorage.getItem("hasBusiness"));
-  const { hasBusinessUpdated } = useAuth();
+  const { hasBusinessUpdated, updateHasBusinessUpdated  } = useAuth();
   // // const hasBusiness = profile?.data.hasBusiness
-  // // useEffect(() => {
-  // //   // setHasBusiness(profile?.data.hasBusiness);
-  // // }, []);
+  useEffect(() => {
+    updateHasBusinessUpdated(true);
+  }, [hasBusinessUpdated]);
  
 
   

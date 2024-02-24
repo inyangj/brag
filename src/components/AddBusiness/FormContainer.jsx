@@ -183,6 +183,7 @@ const FormContainer = () => {
       setIsLoading(false);
       navigate("/brag/business");
     } catch (error) {
+      setIsLoading(false);
       console.error(error);
       toast.error(error.response.data.message);
     }

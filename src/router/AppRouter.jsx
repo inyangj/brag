@@ -26,12 +26,12 @@ const AppRouter = () => {
   // const [hasBusiness, setHasBusiness] = useState(false);
   
   const hasBusiness = JSON.parse(sessionStorage.getItem("hasBusiness"));
-  const { hasBusinessUpdated } = useAuth();
-  // useEffect(() => {
-  //   setHasBusiness(profile?.data.hasBusiness);
-  // }, []);
-
-  console.log(hasBusiness);
+  const { hasBusinessUpdated, updateHasBusinessUpdated  } = useAuth();
+  // // const hasBusiness = profile?.data.hasBusiness
+  useEffect(() => {
+    updateHasBusinessUpdated(true);
+  }, [hasBusinessUpdated]);
+ 
 
   return (
     <BrowserRouter>
