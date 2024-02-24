@@ -140,6 +140,7 @@ const Signup = () => {
               <button
                 type="submit"
                 className="p-3 w-full h-12 bg-[#095EDC] text-white mt-[5%] rounded-md"
+                disabled={isLoading}
               >
                 {isLoading ? "Loading..." : "Sign Up"}
               </button>
