@@ -176,13 +176,15 @@ const FormContainer = () => {
         formDataToSend
       );
       toast.success("Business created successfully");
-      if (response.status === 'success') {
+      if (response.status === '201') {
         updateHasBusinessUpdated(true); 
     }
+    console.log(response)
       resetForm();
       setIsLoading(false);
       navigate("/brag/business");
     } catch (error) {
+      setIsLoading(false);
       console.error(error);
       toast.error(error.response.data.message);
     }
