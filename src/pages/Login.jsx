@@ -45,7 +45,11 @@ const Login = () => {
      
 
         setIsLoading(false);
-        navigate(from, { replace: true });
+        if (from === "/") {
+          navigate('/brag', { replace: true });
+        } else {
+          navigate(from, { replace: true });
+        }
       }
     } catch (error) {
       toast.error('Incorrect username or password.');

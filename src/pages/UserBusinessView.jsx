@@ -21,9 +21,10 @@ const UserBusinessView = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [reviewText, setReviewText] = useState("");
   const [reviewerName, setReviewerName] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const { id } = useParams();
   const queryClient = useQueryClient();
+
 
 
   const getBusiness = async () => {
@@ -69,6 +70,7 @@ const UserBusinessView = () => {
     mutateAsync: mutateSubmitReview
   } = useMutation({
     mutationFn: async (reviewData) => {
+      setLoader(true);
       try {
         const response = await axios.post(
           `reviews/${businessData?.slug}`,
@@ -82,8 +84,10 @@ const UserBusinessView = () => {
     },
     mutationKey: ["submitReview"],
     onSuccess: () => {
+      setLoader(false);
       toast.success("Review submitted successfully!");
       setReviewText("");
+      setReviewerName("");
       setShowTextarea(false);
       queryClient.invalidateQueries({ queryKey: ["getBusiness"] });
     },
@@ -214,8 +218,9 @@ const UserBusinessView = () => {
               <button
                 className="bg-[#095EDC] text-white px-4 py-2 rounded hover:bg-[#095EDC] focus:outline-none focus:shadow-outline-blue active:bg-[#095EDC] "
                 type="submit"
+                disabled={loader}
               >
-                Submit
+               {loader ? 'submitting...' : 'submit'}
               </button>
               <button
                 className="border-[#095EDC] border  px-4 py-2 rounded text-[#095EDC] focus:outline-none focus:shadow-outline-blue active:bg-[#095EDC] "
