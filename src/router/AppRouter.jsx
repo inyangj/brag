@@ -39,7 +39,6 @@ const AppRouter = () => {
         <Route path={`/createpassword/:token`} element={<Createpassword />} />
         <Route path={`/Reguser`} element={<Reguser />} />
         <Route path={`/Unreguser`} element={<Unreguser />} />
-        <Route path={`/profile`} element={<ProfilePage />} />
         <>
           <Route element={<RequireAuth />}>
             <Route path={`/`} element={<Layout />}>
@@ -54,9 +53,10 @@ const AppRouter = () => {
                 </Route>
               ) : (
                 <Route path={`/brag/business`} element={<AddBusiness />} />
-              )}
+                )}
             </Route>
             {/* <Route path={`/addBusiness`} element={<AddBusiness />} /> */}
+                <Route path={`/profile`} element={<ProfilePage />} />
           </Route>
         </>
         <Route path="*" element={<Missing />} />

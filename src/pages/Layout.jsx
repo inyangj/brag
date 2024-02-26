@@ -11,10 +11,12 @@ const Layout = () => {
     <div className="relative font-montserrat">
       <header>
         <Nav />
+        
    
       </header>
       <Outlet />
      <Footer />
+     
     </div>
   );
 };
