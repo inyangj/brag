@@ -9,3 +9,29 @@
 .business{
     box-shadow: 0px 2px 16px 0px #0000001A;
 }
+
+
+  .background-image {
+    background-image: url('./assets/business/jollof.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    min-height: 600px;
+    width: 100%;
+  }
+  .background {
+    background-image: url('./assets/business/cover.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    min-height: 355px;
+    width: 100%;
+  }
+  .back {
+    background-image: url('./assets/business/jollof.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    min-height: 100px;
+    width: 100%;
+  }

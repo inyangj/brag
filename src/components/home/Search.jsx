@@ -73,58 +73,65 @@ const Search = ({className, children}) => {
     }
 
   return (
-    <section className='grid justify-center '>
-        <form action="" onSubmit={handleSubmit} className='flex items-center  py-4 justify-center :w-[500px] xl:w-[800px]'>
+    <section className="grid justify-center ">
+      <form
+        action=""
+        onSubmit={handleSubmit}
+        className="flex items-center  py-4 justify-center :w-[500px] xl:w-[800px]"
+      >
         <div className="relative w-full lg:w-1/2">
-        <div className="w-full  flex items-center gap-x-4 bg-white/10 rounded-lg px-3 lg:px-5 py-3 lg:py-4 shadow-md">
-        <FontAwesomeIcon title='search' className='text-[#A9A9A9] ' icon={faMagnifyingGlass} />
+          <div className="w-full  flex items-center gap-x-4 bg-white rounded-lg px-3 lg:px-5 py-3 lg:py-4 shadow-md">
+            <FontAwesomeIcon
+              title="search"
+              className="text-[#A9A9A9] "
+              icon={faMagnifyingGlass}
+            />
 
-          <input
-            className="w-full bg-transparent shadow-none border-0 outline-0  text-sm "
-            type="text"
-            placeholder="Search"
-            value={term}
-            onChange={onInputChange}
-          />
+            <input
+              className="w-full lg:w-[730px] bg-white shadow-none border-0 outline-0  text-sm "
+              type="text"
+              placeholder="Search"
+              value={term}
+              onChange={onInputChange}
+            />
+          </div>
+          {showSuggestions && (
+            <ul className="absolute w-full bg-white rounded-b-lg py-2 overflow-y-auto">
+              {!isLoading ? (
+                suggestions?.map((suggestion, index) => (
+                  <li
+                    key={index}
+                    className="cursor-pointer px-4 py-2 hover:bg-white/20 font-heebo"
+                    onClick={() => handleSuggestionClick(suggestion.id)}
+                  >
+                    {suggestion.businessName}
+                  </li>
+                ))
+              ) : (
+                <div className="px-4 py-2 font-heebo">
+                  <b>Loading...</b>
+                </div>
+              )}
+
+              {!isLoading && suggestions?.length === 0 ? (
+                <h3 className="px-4 py-2 font-heebo">
+                  <b>No Results!</b>
+                </h3>
+              ) : null}
+            </ul>
+          )}
         </div>
-        {showSuggestions && (
-          <ul className="absolute w-full bg-white rounded-b-lg py-2 overflow-y-auto">
-            {!isLoading ? (
-              suggestions?.map((suggestion, index) => (
-                <li
-                  key={index}
-                  className="cursor-pointer px-4 py-2 hover:bg-white/20 font-heebo"
-                  onClick={() => handleSuggestionClick(suggestion.id)}
-                >
-                  {suggestion.businessName}
-                </li>
-              ))
-            ) : (
-              <div className="px-4 py-2 font-heebo">
-                <b>Loading...</b>
-              </div>
-            )}
-
-            {!isLoading && suggestions?.length === 0 ? (
-              <h3 className="px-4 py-2 font-heebo">
-                <b>No Results!</b>
-              </h3>
-            ) : null}
-          </ul>
-        )}
-      </div>
-            {/* <div className='border bin rounded-r-[10px] border-[#A9A9A9] p-3'>
+        {/* <div className='border bin rounded-r-[10px] border-[#A9A9A9] p-3'>
             <FontAwesomeIcon title='search' className='text-[#A9A9A9] ' icon={faFilter} />
 
             </div> */}
+      </form>
 
-        </form>
-
-            <button className={`${className} `} onClick={handleSubmit}>
-               {children}
-            </button> 
+      <button className={`${className} `} onClick={handleSubmit}>
+        {children}
+      </button>
     </section>
-  )
+  );
 }
 
 export default Search

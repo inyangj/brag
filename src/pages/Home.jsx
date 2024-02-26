@@ -19,7 +19,11 @@ const Home = () => {
       <header>
         <Nav />
         <section className="flex flex-col md:flex-row-reverse mt-10 bg-[#095EDC2B] justify-center md:gap-10 items-center px-6  py-6 lg:pl-12 lg:px-0 xl:pl-28 lg:py-[1.88rem] ">
-          <img src={Hero} alt="home" className=" my-10 md:w-[300px] lg:w-1/2 " />
+          <img
+            src={Hero}
+            alt="home"
+            className=" my-10 md:w-[300px] lg:w-1/2 "
+          />
           <div className="my-10">
             <h2 className="text-3xl xl:text-6xl font-bold xl:mb-5 ">
               Looking for the best places around you?
@@ -29,11 +33,13 @@ const Home = () => {
               Our community of users shares their genuine experiences, ensuring
               you get the most accurate information.
             </p>
-            <button onClick={() => setIsModalOpen(true)} className="bg-[#095EDC] text-white px-4 py-2 rounded text-lg hover:bg-blue-600 font-semibold focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-[#095EDC] text-white px-4 py-2 rounded text-lg hover:bg-blue-600 font-semibold focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+            >
               Get Started
             </button>
 
-            
             <GetStartedModal isOpen={isModalOpen} onClose={setIsModalOpen} />
           </div>
         </section>
@@ -42,8 +48,7 @@ const Home = () => {
         <section className="">
           <Search />
           <div className="px-6 py-6 lg:px-12 lg:py-[1.88rem] xl:px-28">
-          <FeaturedBusiness productsToShow={6} />
-
+            <FeaturedBusiness productsToShow={6} />
           </div>
           <AboutUs />
         </section>
@@ -58,7 +63,7 @@ const Home = () => {
             </p>
             <Link
               to="/signup"
-              className="bg-[#095EDC] text-white px-7 py-3 rounded-[10px] text-lg hover:bg-blue-600 font-semibold focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mx-auto lg:w-[260px] "
+              className="bg-[#095EDC] text-white px-7 py-3 rounded-[10px] lg:h-[77px] text-2xl hover:bg-blue-600 font-semibold grid items-center justify-center focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mx-auto lg:w-[260px] "
             >
               SignUp
             </Link>
@@ -68,34 +73,33 @@ const Home = () => {
           <h3 className="text-2xl md:text-3xl font-bold  text-[#095EDC] text-center ">
             Benefits
           </h3>
-          <div className="grid gap-5 md:gap-10">
-            <div className="flex flex-col md:flex-row  md:justify-center md:items-center gap-5 md:gap-10 lg:gap-20 xl:gap-32">
+          <div className="grid justify-center items-center">
+            <div className="grid md:grid-cols-2 md:justify-center md:items-center gap-5 md:gap-10 lg:gap-[57px]">
               <p className="text-lg md:text-2xl flex gap-3 items-center">
-                <img src={tick} alt="tick" />
+                <img src={tick} className="w-[69px] h-[69px]" alt="tick" />
                 Genuine experiences
               </p>
               <p className="text-lg md:text-2xl flex gap-3 items-center">
-                <img src={tick} alt="tick" />
+                <img src={tick} className="w-[69px] h-[69px]" alt="tick" />
                 Most accurate information
               </p>
-            </div>
-            <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-5 md:gap-10 lg:gap-20 xl:gap-32">
               <p className="text-lg md:text-2xl flex gap-3 items-center">
-                <img src={tick} alt="tick" />
+                <img src={tick} className="w-[69px] h-[69px]" alt="tick" />
                 Wide reach to target audience
               </p>
               <p className="text-lg md:text-2xl flex gap-3 items-center">
-                <img src={tick} alt="tick" />
+                <img src={tick} className="w-[69px] h-[69px]" alt="tick" />
                 Impartial and authentic reviews
               </p>
             </div>
+            <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-5 md:gap-10 lg:gap-20 xl:gap-32"></div>
           </div>
           <Link
-              to="/signup"
-              className="bg-[#095EDC] text-white px-7 py-3 rounded-[10px] text-lg hover:bg-blue-600 font-semibold focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mx-auto text-center lg:w-[260px]"
-            >
-              SignUp
-            </Link>
+            to="/signup"
+            className="bg-[#095EDC] grid items-center justify-center  text-white px-7 lg:h-[77px] py-3 rounded-[10px] text-2xl hover:bg-blue-600 font-semibold focus:outline-none focus:shadow-outline-blue active:bg-blue-800 mx-auto text-center lg:w-[260px]"
+          >
+            SignUp
+          </Link>
         </section>
       </main>
       <Footer />
